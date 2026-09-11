@@ -21,7 +21,7 @@ jobs:
       - name: Checkout converted manual (gh-pages)
         uses: actions/checkout@v4.2.2
         with:
-          repository: brucekomike/ardour-manual-conventer
+          repository: brucekomike/ardour-manual-converter
           ref: gh-pages
           path: tmp/ardour-manual-conventer
 
