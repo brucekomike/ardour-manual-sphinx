@@ -24,9 +24,16 @@ jobs:
           ref: gh-pages
           path: tmp/ardour-manual-conventer
 
+      - name: Checkout preview manual config
+        uses: actions/checkout@v4.2.2
+        with:
+          repository: brucekomike/ardour-manual-sphinx-preview
+          path: tmp/ardour-manual-sphinx-preview
+
       - name: Replace docs/source with converted manual
         run: |
           rsync -a --delete --exclude='.git' tmp/ardour-manual-conventer/ docs/source/
+          cp tmp/ardour-manual-sphinx-preview/docs/source/conf.py docs/source/conf.py
 
       - name: Set up Python
         uses: actions/setup-python@v5.4.0
