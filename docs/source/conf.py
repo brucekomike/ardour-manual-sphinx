@@ -51,6 +51,7 @@ myst_enable_extensions = [#
     "substitution",
     "tasklist",
     "attrs_inline",
+    "attrs_block",
 ]
 source_suffix = {
    '.rst': 'restructuredtext',
