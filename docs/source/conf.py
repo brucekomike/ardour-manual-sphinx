@@ -7,9 +7,9 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 ## change required >>>
-project = 'template-intergrated'
-copyright = '2025, brucekomike'
-author = 'brucekomike'
+project = 'ardour manual'
+copyright = '2026, ardour.org'
+author = 'ardour.org'
 release = 'v0.3.0'
 language='en'
 ## change required <<<
@@ -72,15 +72,17 @@ exclude_patterns = ['_build', 'build', 'Thumbs.db',
 html_theme = 'furo'
 html_static_path = ['_static']
 ## change required >>>
-html_title = "furo template"
+html_title = "ardour manual"
 html_last_updated_fmt = ''
 html_css_files = [
-        "footer.css",
+        "common.css",
+        "luadoc.css",
+        "screen.css",
 ]
 html_theme_options = {
     # github config here,
-    "source_repository": "https://github.com/brucekomike/furo-embeded",
-    "source_branch": "main",
+    "source_repository": "https://github.com/brucekomike/ardour-manual-converter",
+    "source_branch": "gh-pages",
     "source_directory": "docs/source/",
     # key navigation
     "navigation_with_keys": True,
@@ -88,11 +90,3 @@ html_theme_options = {
     #"source_view_link": "https://gitlab.change.this/OWNER/REPO/-/blob/main/docs/source/{filename}",
 }
 highlight_language = 'text'
-#html_logo = '_static/logo.svg'
-#html_favicon = '_static/frameworker.svg'
-ogp_site_url = 'https://brucekomike.github.io/furo-embeded/'
-#ogp_image = '_static/logo.svg'
-#ogp_image_alt = 'site logo'
-ogp_site_name = 'furo template'
-ogp_use_first_image = True
-## change required <<<
