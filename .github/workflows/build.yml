@@ -36,6 +36,11 @@ jobs:
           rsync -a --delete --exclude='.git' tmp/ardour-manual-conventer/ docs/source/
           cp tmp/ardour-manual-sphinx-preview/docs/source/conf.py docs/source/conf.py
 
+      - name: Add preview static assets
+        run: |
+          mkdir -p docs/source/_static
+          rsync -a tmp/ardour-manual-sphinx-preview/docs/source/_static/ docs/source/_static/
+
       - name: Set up Python
         uses: actions/setup-python@v5.4.0
         with:
