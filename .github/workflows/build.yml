@@ -25,7 +25,7 @@ jobs:
           ref: gh-pages
           path: tmp/ardour-manual-conventer
 
-      - name: Checkout preview manual config
+      - name: Checkout preview manual static assets
         uses: actions/checkout@v4.2.2
         with:
           repository: brucekomike/ardour-manual-sphinx-preview
@@ -42,8 +42,9 @@ jobs:
 
       - name: Replace docs/source with converted manual
         run: |
+          cp docs/source/conf.py /tmp/ardour-manual-sphinx-conf.py
           rsync -a --delete --exclude='.git' tmp/ardour-manual-conventer/ docs/source/
-          cp tmp/ardour-manual-sphinx-preview/docs/source/conf.py docs/source/conf.py
+          cp /tmp/ardour-manual-sphinx-conf.py docs/source/conf.py
 
       - name: Add preview static assets
         run: |
