@@ -50,7 +50,7 @@ jobs:
           mkdir -p docs/source/_static
           rsync -a tmp/ardour-manual-sphinx-preview/docs/source/_static/ docs/source/_static/
           mkdir -p docs/source/_static/css
-          rsync -a --delete tmp/ardour-manual-css/source/css/ docs/source/_static/css/
+          rsync -a --delete tmp/ardour-manual-css/source/css/ docs/source/_static/
 
       - name: Set up Python
         uses: actions/setup-python@v5.4.0
