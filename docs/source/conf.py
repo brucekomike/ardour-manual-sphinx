@@ -23,8 +23,7 @@ extensions = ["sphinx_inline_tabs",
 'sphinx_copybutton',
 'myst_parser',
 'sphinx.ext.githubpages',
-'sphinx_design',
-'attrs_inline'
+'sphinx_design'
 ## change required >>>
 #'sphinxcontrib.mermaid',
 #'sphinx.ext.mathjax',
@@ -51,6 +50,7 @@ myst_enable_extensions = [#
     "strikethrough",
     "substitution",
     "tasklist",
+    "attrs_inline",
 ]
 source_suffix = {
    '.rst': 'restructuredtext',
