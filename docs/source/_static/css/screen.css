@@ -20,46 +20,6 @@ body {
   line-height: 1.8em;
 }
 
-/* Style heading link */
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-  visibility: hidden;
-  text-decoration: none;
-}
-
-h1:hover a, h2:hover a, h3:hover a, h4:hover a, h5:hover a, h6:hover a {
-  visibility: visible;
-}
-
-h1, h2, h3, h4 {
-  font-weight: normal;
-  padding-bottom: .3ex;
-}
-
-h1 {
-  font-size: 1.8em;
-  margin: 0 0 2ex 0;
-  padding-bottom: .8ex;
-  border-bottom: 2px solid #ccc;
-}
-
-h2 {
-  font-size: 1.3em;
-  margin: 2ex 0 1ex 0;
-  border-bottom: 2px solid #ddd;
-}
-
-h3 {
-  font-size: 1.2em;
-  margin: 1.5ex 0 1ex 0;
-  border-bottom: 1px solid #eee;
-}
-
-h4 {
-  font-size: 1.1em;
-  margin: 1.5ex 0 .5ex 0;
-  border-bottom: 1px solid #eee;
-}
-
 table {
   width: 100%;
   margin: 1em 0;
