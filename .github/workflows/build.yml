@@ -31,10 +31,26 @@ jobs:
           repository: brucekomike/ardour-manual-sphinx-preview
           path: tmp/ardour-manual-sphinx-preview
 
+      - name: Checkout Ardour manual CSS
+        uses: actions/checkout@v4.2.2
+        with:
+          repository: Ardour/manual
+          ref: master
+          path: tmp/ardour-manual-css
+          sparse-checkout: source/css
+          sparse-checkout-cone-mode: true
+
       - name: Replace docs/source with converted manual
         run: |
           rsync -a --delete --exclude='.git' tmp/ardour-manual-conventer/ docs/source/
           cp tmp/ardour-manual-sphinx-preview/docs/source/conf.py docs/source/conf.py
+
+      - name: Add preview static assets
+        run: |
+          mkdir -p docs/source/_static
+          rsync -a tmp/ardour-manual-sphinx-preview/docs/source/_static/ docs/source/_static/
+          mkdir -p docs/source/_static/css
+          rsync -a --delete tmp/ardour-manual-css/source/css/ docs/source/_static/css/
 
       - name: Set up Python
         uses: actions/setup-python@v5.4.0
