@@ -1,0 +1,448 @@
+@font-face {
+    font-family: 'junge-regular';
+    src: url('../css/junge-regular-webfont.ttf')  format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+  font-family: 'junge-regular';
+  font-size: 18px;
+}
+
+.clear {
+  clear:both;
+}
+
+#content {
+  padding: 1em 2em 2ex 21em;
+  margin-left: 0;
+  line-height: 1.8em;
+}
+
+/* Style heading link */
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  visibility: hidden;
+  text-decoration: none;
+}
+
+h1:hover a, h2:hover a, h3:hover a, h4:hover a, h5:hover a, h6:hover a {
+  visibility: visible;
+}
+
+h1, h2, h3, h4 {
+  font-weight: normal;
+  padding-bottom: .3ex;
+}
+
+h1 {
+  font-size: 1.8em;
+  margin: 0 0 2ex 0;
+  padding-bottom: .8ex;
+  border-bottom: 2px solid #ccc;
+}
+
+h2 {
+  font-size: 1.3em;
+  margin: 2ex 0 1ex 0;
+  border-bottom: 2px solid #ddd;
+}
+
+h3 {
+  font-size: 1.2em;
+  margin: 1.5ex 0 1ex 0;
+  border-bottom: 1px solid #eee;
+}
+
+h4 {
+  font-size: 1.1em;
+  margin: 1.5ex 0 .5ex 0;
+  border-bottom: 1px solid #eee;
+}
+
+table {
+  width:100%;
+  margin: 1em 0;
+  padding: 0;
+  font-weight: normal;
+  text-align: left;
+}
+
+table tr {
+  border-bottom: 2px solid #eeeeee;
+}
+
+table tr:nth-child(odd){
+  background-color: white;
+}
+
+table tr:nth-child(even){
+  background-color: #f5f5f5;
+}
+
+table tr:hover {
+  background-color: #F2F9FF;
+}
+
+table td, table th {
+  margin: 0;
+  padding: .5em;
+}
+
+table th {
+  font-weight: bold;
+}
+
+table th.sub1 {
+  padding-left: 2em;
+}
+
+table th.sub2 {
+  padding-left: 4em;
+}
+
+table thead {
+  font-weight:bold;
+}
+
+table.dl th {
+  /* dl class (definition list) is for 2-columns tables that describe properties:
+  maximmizes the width of the 2nd (description) column */
+  vertical-align: top;
+  min-width: 20%;
+  white-space:nowrap
+}
+
+table.dl td {
+  vertical-align: top;
+  width: 100%;
+}
+
+ul, ol {
+  overflow: hidden;
+}
+
+figure {
+  display: table;
+}
+
+figcaption {
+  display: table-caption;
+  caption-side: bottom;
+  font-style: italic;
+  padding-top: 0.4em;
+  padding-bottom: 1em;
+  font-size: .9em;
+  line-height: .9em; 
+}
+
+figcaption.center {
+  text-align: center;
+}
+
+figcaption.titleover {
+  text-align: center;
+  caption-side: top;
+}
+
+figure.right {
+  margin: 0 0 1em 1em;
+  float: right;
+  clear: right;
+}
+
+figure.left {
+  margin: 0 1em 1em 0;
+  float: left;
+  clear: left;
+}
+
+figure.center {
+  margin: 1em auto 1em auto;
+  clear: both;
+}
+
+img.mini {
+  width: 200px;
+}
+
+img.mini:hover {
+  width: 100%;
+}
+
+img.fit {
+  width: 100%;
+}
+
+p.center {
+  text-align:center;
+}
+
+kbd {
+  text-shadow: 0 0 2px rgb(255, 255, 255);
+  box-shadow: inset 0 0 1px rgb(255, 255, 255), inset 0 0 .4em rgb(200, 200, 200), 0 .1em 0 rgb(130, 130, 130), 0 .11em 0 rgba(0, 0, 0, .4), 0 .1em .11em rgba(0, 0, 0, .9);
+}
+
+kbd.cmd {
+  text-shadow: none;
+  box-shadow: none;
+}
+
+kbd.menu,
+kbd.option,
+kbd.optoff {
+  box-shadow: inset 0 0 1px rgb(255, 255, 255), inset 0 0 .4em rgb(200, 200, 200), 0 .1em 0 rgb(130, 130, 130), 0 .11em 0 rgba(0, 0, 0, .4);
+}
+
+.imagemap {
+  position: relative;
+}
+
+.imagemap img {
+  display: block;
+}
+
+.imagemap .area {
+  display: block;
+  position: absolute;
+  transition: box-shadow 0.15s ease-in-out;
+}
+
+.imagemap .area:hover {
+  box-shadow: 0px 0px 1vw white;
+}
+
+/* for the TOC */
+p.chapter, p.subchapter, p.section, p.subsection {
+  line-height:1em;
+  padding-left: 1em;
+}
+
+p.chapter { 
+  padding-top: 1em;
+  padding-bottom:1em;
+}
+
+p.subchapter {
+  padding-left: 4em;
+}
+
+p.section {
+  padding-left: 6em;
+}
+
+p.subsection { 
+  padding-left: 8em;
+}
+
+#tree {
+  background-color: #212A30;
+  line-height: 1.8ex;
+  height: 100%;
+  overflow: scroll;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 20em;
+  padding: 1em 1em 2em 1.5em;
+}
+
+#tree h1 {
+  font-size: 1.75em;
+  margin-bottom: 1em;
+  font-weight: normal;
+}
+
+#tree ul {
+  padding-left: 1em;
+  list-style-type: none;
+}
+
+#tree a {
+  display: inline !important;
+  font-size: 0.88em;
+  line-height: 2em;
+  color: #E4E4E4;
+  border-bottom: 1px solid transparent;
+}
+
+#tree a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid #aaa;
+}
+
+#tree .active > a {
+  display: inline;
+  color: #FF8080;
+}
+
+
+@media (max-width: 800px) {
+  #tree {
+    position: relative;
+    height: 250px;
+    width: 100%;
+    margin-top: 20px;
+  }
+  #content {
+    padding-left: 20px;
+    margin-top: 0px;
+  }
+}
+
+.for-green {
+  color:darkgreen;
+}
+
+.for-red {
+  color:darkred;
+}
+
+.github-link {
+  background-image: url(/images/github.png);
+  background-size: 32px 32px;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+}
+
+.theme-changer {
+  background:none;
+  background-image: url(/images/contrast.png);
+  background-size: 32px 32px;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  border:none;
+  margin-left: -5px;
+}
+
+/* dark theme */
+body.dark-theme,
+body.dark-theme > .container-fluid {
+  background-color: #222222;
+  color: #f7f1ff;
+}
+
+body.dark-theme #content {
+  background-color: #222222;
+  color: #f7f1ff;
+  min-height: 100vh;;
+}
+
+body.dark-theme #content #luaref table.classmembers td.doc div.dox,
+body.dark-theme #content div.note,
+body.dark-theme #content p.well,
+body.dark-theme #content p.note {
+  background-color: #323132;
+}
+
+body.dark-theme #content #luaref h3.pointerclass,
+body.dark-theme #content #luaref h3.class,
+body.dark-theme #content #luaref h3.array,
+body.dark-theme #content #luaref h3.enum  {
+  color: black;
+}
+
+body.dark-theme #content figure img,
+body.dark-theme #content kbd.menu,
+body.dark-theme #content kbd.option,
+body.dark-theme #content kbd.optoff,
+body.dark-theme #content kbd.input {
+  background-color: white;
+}
+
+body.dark-theme #content .warning {
+background-color: darkred;
+}
+
+body.dark-theme #content table tr:nth-child(2n+1) {
+  background-color: #191919;
+}
+
+body.dark-theme #content table tr:nth-child(2n) {
+  background-color: #222222;
+}
+
+body.dark-theme #content kbd.cmd.lin::before {
+  color: darkgreen;
+}
+
+body.dark-theme #content .github-link {
+  background-image: url(/images/github-light.png);
+}
+
+body.dark-theme #content .theme-changer {
+  background-image: url(/images/contrast-light.png);
+}
+
+body.dark-theme #content .for-green {
+  color:lightgreen;
+}
+
+body.dark-theme #content .for-red {
+  color:lightcoral;
+}
+
+body.dark-theme #content .fixme {
+  background-color: rebeccapurple;
+}
+
+body.dark-theme #content a {
+  color: #49abff;
+}
+
+body.dark-theme #content .pager li > a,
+body.dark-theme #content .pager li > span {
+  background-color: #202020;
+}
+
+body.dark-theme #content .breadcrumb {
+  background-color: #212a30;
+}
+
+body.dark-theme #content .breadcrumb > .active {
+  color: #b7b7b7;
+}
+
+body.dark-theme #content #luaref div.code samp {
+  color: #007900;
+}
+
+body.dark-theme #content code a {
+  color: #006ac6
+}
+
+body.dark-theme #content div.luafooter {
+  color: white;
+}
+
+body.dark-theme #tree {
+  background-color: black;
+}
+
+body.dark-theme #tree a {
+  color: white;
+  text-shadow: 0 0 0 white;
+}
+
+
+body.dark-theme #tree .active > a {
+  color: #FF8080;
+  text-shadow: 0 0 0 #FF8080;
+}
+
+body.dark-theme .invert-in-dark {
+  filter: invert(1);
+}
+
+body.dark-theme pre {
+  background: #1f1f1f;
+  color: #9cdcfe;
+}
+
+body.dark-theme .well {
+  background: darkgrey;
+  color: black;
+}
