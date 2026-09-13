@@ -1,0 +1,2330 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="Preferences" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="preferences-and-session-properties/preferences-dialog.html" />
+<meta property="og:site_name" content="ardour manual" />
+<meta property="og:description" content="Global preferences control general workflow and system configuration, and should apply to all sessions. They are located in Edit &gt; Preferences and stored in Ardour’s user configuration file in t..." />
+<meta name="description" content="Global preferences control general workflow and system configuration, and should apply to all sessions. They are located in Edit &gt; Preferences and stored in Ardour’s user configuration file in t..." />
+<link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Session Properties" href="session-properties-dialog.html"><link rel="prev" title="Transport Masters" href="../synchronization/transport-masters.html.html">
+
+    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+        <title>Preferences - ardour manual</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
+    <link rel="stylesheet" type="text/css" href="../_static/common.css?v=001cb0eb" />
+    <link rel="stylesheet" type="text/css" href="../_static/luadoc.css?v=dc031359" />
+    <link rel="stylesheet" type="text/css" href="../_static/screen.css?v=b9c0baef" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle site navigation sidebar">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc" aria-label="Toggle table of contents sidebar">
+<label class="overlay sidebar-overlay" for="__navigation"></label>
+<label class="overlay toc-overlay" for="__toc"></label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <span class="icon"><svg><use href="#svg-menu"></use></svg></span>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">ardour manual</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <span class="sidebar-brand-text">ardour manual</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../about-ardour/index.html">About Ardour</a><input aria-label="Toggle navigation of About Ardour" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../welcome-to-ardour/about-ardour-documentation.html">About Ardour’s documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../welcome-to-ardour.html">Ardour Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../welcome-to-ardour/about-ardour/why-is-it-called-ardour.html">Why is it called Ardour?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../welcome-to-ardour/about-ardour/why-write-a-daw-for-linux.html">Why Write a DAW for Linux?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../welcome-to-ardour/about-ardour/isnt-this-a-really-complicated-program.html">Isn’t This a Really Complicated Program?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introducing-ardour/creating-music-with-ardour.html">Creating Music with Ardour</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../welcome-to-ardour/additional-resources.html">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introducing-ardour/index.html">Getting Started</a><input aria-label="Toggle navigation of Getting Started" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../setting-up-your-system/starting-ardour.html">Starting Ardour</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introducing-ardour/understanding-basic-concepts-and-terminology.html">Understanding Basic Concepts and Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introducing-ardour/basic-gui-operations/using-the-mouse.html">Using the Mouse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../default-keyboard-bindings.html">Default Keyboard Bindings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introducing-ardour/basic-gui-operations.html">Basic GUI Operations</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../ardour-configuration/index.html">Ardour Configuration</a><input aria-label="Toggle navigation of Ardour Configuration" checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../ardour-systems/index.html">Ardour Systems</a><input aria-label="Toggle navigation of Ardour Systems" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setting-up-your-system/the-right-computer-system-for-digital-audio.html">The Right Computer System for Digital Audio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setting-up-your-system/mouse.html">The Right Mouse</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../setting-up-your-system/index.html">System Specific Setup</a><input aria-label="Toggle navigation of System Specific Setup" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setting-up-your-system/platform-specifics/ubuntu-linux.html">Ubuntu Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setting-up-your-system/platform-specifics/microsoft-windows.html">Microsoft Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../kde-plasma-5.html">KDE Plasma 5</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../i-o-setup/index.html">I/O Setup</a><input aria-label="Toggle navigation of I/O Setup" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setting-up-your-system/connecting-audio-and-midi-devices.html">Connecting Audio and MIDI Devices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../recording/monitoring/monitor-setup-in-ardour.html">Monitor Setup in Ardour</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="../synchronization/index.html">Synchronization</a><input aria-label="Toggle navigation of Synchronization" checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../synchronization/on-clock-and-time.html">On Clock and Time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../synchronization/latency-and-latency-compensation.html">Latency and Latency-Compensation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../synchronization/timecode-generators-and-slaves.html">Timecode Generators and Slaves</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../synchronization/overview-of-timecode-related-settings.html">Overview of all Timecode related settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../synchronization/transport-masters.html.html">Transport Masters</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Preferences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="session-properties-dialog.html">Session Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../setting-up-your-system/setting-up-midi/index.html">Configuring MIDI</a><input aria-label="Toggle navigation of Configuring MIDI" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../setting-up-your-system/setting-up-midi/midi-on-linux.html">MIDI on Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setting-up-your-system/setting-up-midi/midi-on-os-x.html">MIDI on OS X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../setting-up-your-system/keyboard-shortcuts.html">Keyboard Shortcuts</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ardours-interface/index.html">Ardour’s Interface</a><input aria-label="Toggle navigation of Ardour’s Interface" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" role="switch" type="checkbox"/><label for="toctree-checkbox-9"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ardours-interface/about.html">Ardour’s Interface Overview</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../ardours-interface/main-menu/index.html">Main Menu</a><input aria-label="Toggle navigation of Main Menu" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" role="switch" type="checkbox"/><label for="toctree-checkbox-10"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/main-menu/Session-menu.html">The Session Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/main-menu/Transport-menu.html">The Transport Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/main-menu/Edit-menu.html">The Edit Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/main-menu/Region-menu.html">The Region Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/main-menu/Track-menu.html">The Track Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/main-menu/View-menu.html">The View Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/main-menu/Window-menu.html">The Window Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/main-menu/Help-menu.html">The Help Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/status-bar.html">Status Bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/the-transport-bar.html">Transport Bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/record-punch-options.html.html">Record/Punch Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/using-ardour-clock-displays.html">Transport Clocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/selection-and-punch-clocks.html">Selection Clocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mini-timeline.html">Mini-Timeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/status-indicators.html">Other Toolbar Items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/the-toolbox.html">Toolbox</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../controls/index.html">Controls</a><input aria-label="Toggle navigation of Controls" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" role="switch" type="checkbox"/><label for="toctree-checkbox-11"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/the-playhead-options.html">Playhead Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/the-zoom-controls.html">Zoom Controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/the-grid-controls.html">Grid Controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../editing-and-arranging/edit-point.html">Edit Point Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/the-nudge-controls.html">Nudge Controls</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../ardours-interface/ruler-and-markers/index.html">Rulers and Markers</a><input aria-label="Toggle navigation of Rulers and Markers" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" role="switch" type="checkbox"/><label for="toctree-checkbox-12"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/the-ruler.html">Rulers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-markers.html">Markers Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bars-beats.html">Bars:Beats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tempo.html">Tempo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../time-signature.html">Time Signature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-markers/creating-range-markers.html">Range Markers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-markers/loop-range.html">Loop Range</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-markers/punch-range.html">Punch Range</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-markers/creating-location-markers.html">Location Markers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-markers/cd-markers.html">CD Track Markers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-markers/cue-markers.html">Cue Markers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-markers/arrangement-ruler.html.html">Arrangement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/the-summary.html">Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/bottom-pane.html">Bottom pane</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../ardours-interface/editor-lists/index.html">Editor and Cue Lists</a><input aria-label="Toggle navigation of Editor and Cue Lists" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" role="switch" type="checkbox"/><label for="toctree-checkbox-13"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/editor-lists/tracks-and-busses-list.html">The Tracks and Busses List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/editor-lists/sources-list.html">The Sources List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/editor-lists/region-list.html">The Regions List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/editor-lists/clips-list.html">The Clips List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/editor-lists/arrangement-list.html">The Arrangement List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/editor-lists/snapshot-list.html">The Snapshot List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/editor-lists/track-and-bus-group-list.html">The Track and Bus Group List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/editor-lists/ranges-and-marks-list.html">The Ranges and Marks Lists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/favorite-plugins-window.html">Favorite Plugins Window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/the-strips-list.html">Strips list</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mixer-strips/index.html">Mixer Strips</a><input aria-label="Toggle navigation of Mixer Strips" class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" role="switch" type="checkbox"/><label for="toctree-checkbox-14"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/audio-midi-mixer-strips.html">Audio/MIDI Mixer Strips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/busses-mixer-strips.html">Audio/MIDI Busses Mixer Strips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/control-masters.html">VCA Mixer Strips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/foldback-strip.html">Foldback Section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/the-master-bus-strip.html">Master Bus Strip</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../ardours-interface/editor-tracks/index.html">Editor Tracks</a><input aria-label="Toggle navigation of Editor Tracks" class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" role="switch" type="checkbox"/><label for="toctree-checkbox-15"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-tracks/audio-track-controls.html">Audio Track Controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-tracks/midi-track-controls.html">MIDI Track Controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-tracks/bus-controls.html">Bus Controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-tracks/track-and-bus-groups.html">Track and Bus Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-tracks/quick-groups.html">Quick groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ardours-interface/the-monitor-section.html">Monitor Section</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../sessions-tracks/index.html">Sessions &amp; Tracks</a><input aria-label="Toggle navigation of Sessions &amp; Tracks" class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" role="switch" type="checkbox"/><label for="toctree-checkbox-16"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../working-with-sessions/index.html">Sessions</a><input aria-label="Toggle navigation of Sessions" class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" role="switch" type="checkbox"/><label for="toctree-checkbox-17"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-sessions/whats-in-a-session.html">What’s in a Session?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-sessions/where-are-sessions-stored.html">Where Are Sessions Stored?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-sessions/the-new-session-dialog.html">New/Open Session Dialog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../audio-midi-setup.html">Audio/MIDI Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-sessions/renaming-a-session.html">Renaming a Session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-sessions/metadata.html">Session Metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-sessions/session-templates.html">Session Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-sessions/snapshots.html">Snapshots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-sessions/cleaning_up.html">Cleaning Up Sessions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-sessions/backup-and-sharing-of-sessions.html">Backup and Sharing of Sessions</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../working-with-tracks/index.html">Tracks</a><input aria-label="Toggle navigation of Tracks" class="toctree-checkbox" id="toctree-checkbox-18" name="toctree-checkbox-18" role="switch" type="checkbox"/><label for="toctree-checkbox-18"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-tracks/adding-tracks-and-busses.html">Adding Tracks, Busses and VCAs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-tracks/track-templates.html">Track Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-tracks/track-types.html">Track Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-tracks/track-modes.html">Track Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-tracks/controlling-track-appearance/layering-display.html">Track Layering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../channel-configuration.html">Channel Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-tracks/controlling-track-ordering.html">Track Ordering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-tracks/controlling-track-appearance/track-coloring.html">Track Color</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-tracks/controlling-track-appearance/track-height.html">Track Height</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-tracks/controlling-track-appearance/waveform-display.html">Waveform display</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-tracks/track-context-menu.html">Track Context Menu</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../playback/index.html">Playback</a><input aria-label="Toggle navigation of Playback" class="toctree-checkbox" id="toctree-checkbox-19" name="toctree-checkbox-19" role="switch" type="checkbox"/><label for="toctree-checkbox-19"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../controlling-playback.html">Controlling Playback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../the-big-clock.html">The Big Clock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using-key-bindings.html">Using Key Bindings</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../recording/index.html">Recording</a><input aria-label="Toggle navigation of Recording" class="toctree-checkbox" id="toctree-checkbox-20" name="toctree-checkbox-20" role="switch" type="checkbox"/><label for="toctree-checkbox-20"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../the-recorder.html">The Recorder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recording/monitoring.html">Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recording/monitoring/monitor-signal-flow.html">Monitor Signal Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recording/metronome.html">Metronome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../recording/monitoring/latency-considerations.html">Latency Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../i-o-plugins.html">I/O Plugins</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../importing-and-exporting/index.html">Importing and Exporting</a><input aria-label="Toggle navigation of Importing and Exporting" class="toctree-checkbox" id="toctree-checkbox-21" name="toctree-checkbox-21" role="switch" type="checkbox"/><label for="toctree-checkbox-21"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../importing/index.html">Importing</a><input aria-label="Toggle navigation of Importing" class="toctree-checkbox" id="toctree-checkbox-22" name="toctree-checkbox-22" role="switch" type="checkbox"/><label for="toctree-checkbox-22"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../adding-pre-existing-material.html">Adding Pre-existing Material</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../adding-pre-existing-material/import-dialog.html">Import Dialog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../adding-pre-existing-material/supported-file-formats.html">Supported File Formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../adding-pre-existing-material/copying-versus-linking.html">Copying Versus Linking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../adding-pre-existing-material/searching-for-files-using-tags.html">Searching for Files Using Tags</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../exporting/index.html">Exporting</a><input aria-label="Toggle navigation of Exporting" class="toctree-checkbox" id="toctree-checkbox-23" name="toctree-checkbox-23" role="switch" type="checkbox"/><label for="toctree-checkbox-23"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../exporting/export-dialog.html">Export Dialog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../exporting/quick-audio-export.html">Quick Audio Export</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../exporting/edit-export-format-profile.html">Export Format Profiles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-sessions/interchange-with-other-daws/stem-exports.html">Stem Exports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../exporting/bouncing-regions.html">Bouncing Regions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-sessions/interchange-with-other-daws.html">Interchange with other DAWs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../editing-and-arranging/index.html">Editing</a><input aria-label="Toggle navigation of Editing" class="toctree-checkbox" id="toctree-checkbox-24" name="toctree-checkbox-24" role="switch" type="checkbox"/><label for="toctree-checkbox-24"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../navigating-the-editor.html">Navigating the Editor</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../editing-basics/index.html">Editing Basics</a><input aria-label="Toggle navigation of Editing Basics" class="toctree-checkbox" id="toctree-checkbox-25" name="toctree-checkbox-25" role="switch" type="checkbox"/><label for="toctree-checkbox-25"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-regions.html">Working With Regions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-regions/region-editor.html">Region Editor Pane</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-regions/region-naming.html">Region Naming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-regions/corresponding-regions-selection.html">Corresponding Regions Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-regions/region-context-menu.html">Region Context Menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../editing-and-arranging/common-region-edit-operations.html">Common Region Edit Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../editing-and-arranging/copy-regions.html">Copy Regions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../editing-and-arranging/move-regions.html">Move Regions With the Mouse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../editing-and-arranging/move-regions/align-spotting-regions.html">Align (Spot) Regions</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../edit-mode-and-tools/index.html">Edit Mode and Tools</a><input aria-label="Toggle navigation of Edit Mode and Tools" class="toctree-checkbox" id="toctree-checkbox-26" name="toctree-checkbox-26" role="switch" type="checkbox"/><label for="toctree-checkbox-26"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../introducing-ardour/basic-gui-operations/editing-clocks.html">Editing Clocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../editing-and-arranging/which-regions-are-affected.html">Which Regions Are Affected?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../editing-and-arranging/select-regions.html">Making Selections</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../editing-regions-and-selections/index.html">Editing Regions and Selections</a><input aria-label="Toggle navigation of Editing Regions and Selections" class="toctree-checkbox" id="toctree-checkbox-27" name="toctree-checkbox-27" role="switch" type="checkbox"/><label for="toctree-checkbox-27"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../editing-and-arranging/change-region-lengths.html">Trimming Regions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../editing-and-arranging/change-region-lengths/pushpull-trimming.html">Push/Pull Trimming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../move-region-contents.html">Move Region Contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stretching.html">Stretching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../editing-and-arranging/separation/separate-under.html">Separate Under</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../editing-and-arranging/strip-silence-from-audio-regions.html">Strip Silence from Audio Regions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../insert-remove-time.html">Insert/Remove Time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../region-properties.html">Region Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../editing-and-arranging/sections.html">Sections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../editing-and-arranging/create-region-fades-and-crossfades.html">Fades and Crossfades</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../adjusting-gain/index.html">Adjusting Gain</a><input aria-label="Toggle navigation of Adjusting Gain" class="toctree-checkbox" id="toctree-checkbox-28" name="toctree-checkbox-28" role="switch" type="checkbox"/><label for="toctree-checkbox-28"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../region-gain.html">Region Gain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gain-envelopes.html">Gain Envelopes</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../working-with-playlists/index.html">Playlists</a><input aria-label="Toggle navigation of Playlists" class="toctree-checkbox" id="toctree-checkbox-29" name="toctree-checkbox-29" role="switch" type="checkbox"/><label for="toctree-checkbox-29"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-playlists/understanding-playlists.html">Understanding Playlists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-playlists/playlist-operations.html">Playlist Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-playlists/playlist_usecases.html">Playlist Usecases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rhythm-ferret.html">Rhythm Ferret</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../midi/index.html">MIDI</a><input aria-label="Toggle navigation of MIDI" class="toctree-checkbox" id="toctree-checkbox-30" name="toctree-checkbox-30" role="switch" type="checkbox"/><label for="toctree-checkbox-30"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../midi-overview/index.html">MIDI Overview</a><input aria-label="Toggle navigation of MIDI Overview" class="toctree-checkbox" id="toctree-checkbox-31" name="toctree-checkbox-31" role="switch" type="checkbox"/><label for="toctree-checkbox-31"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-midi/create-midi-tracks.html">Creating MIDI Tracks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-midi/create-midi-regions.html">Creating MIDI Regions</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../working-with-midi/index.html">MIDI Editing</a><input aria-label="Toggle navigation of MIDI Editing" class="toctree-checkbox" id="toctree-checkbox-32" name="toctree-checkbox-32" role="switch" type="checkbox"/><label for="toctree-checkbox-32"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-midi/pianoroll-window.html">Pianoroll Window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-midi/pianoroll-window-multiple-regions.html">Editing Multiple MIDI Regions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-midi/controlling-midi-range.html">Controlling Visible Note Range</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../working-with-midi/add-new-notes/index.html">Adding New Notes</a><input aria-label="Toggle navigation of Adding New Notes" class="toctree-checkbox" id="toctree-checkbox-33" name="toctree-checkbox-33" role="switch" type="checkbox"/><label for="toctree-checkbox-33"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../working-with-midi/handle-overlapping-notes.html">Handling Overlapping Notes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../editing-and-arranging/edit-midi/note-selection.html">Note Selection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working-with-midi/note-cut-copy-and-paste.html">Note Cut, Copy and Paste</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working-with-midi/note-splitting-joining.html">Note Splitting and Joining</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working-with-midi/chords.html">Adding and Editing Chords</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../editing-and-arranging/editing-midi/changing-note-properties.html">Changing Note Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../editing-and-arranging/editing-midi/editing-velocity.html">Editing Velocity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working-with-midi/patch-change.html">Patch Change</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working-with-midi/copy-midi-region.html">Independent and Dependent MIDI Region Copies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working-with-midi/quantize-midi.html">Quantizing MIDI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working-with-midi/transpose-midi.html">Transposing MIDI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../midi-list-editor.html">MIDI List Editor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../working-with-midi/transformation-midi.html">Transforming MIDI with Mathematical Operations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../midi-recording/index.html">MIDI Recording</a><input aria-label="Toggle navigation of MIDI Recording" class="toctree-checkbox" id="toctree-checkbox-34" name="toctree-checkbox-34" role="switch" type="checkbox"/><label for="toctree-checkbox-34"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-midi/step-entry.html">Step Entry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../the-virtual-midi-keyboard.html">The Virtual MIDI Keyboard</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../midi-automation/index.html">MIDI Automation</a><input aria-label="Toggle navigation of MIDI Automation" class="toctree-checkbox" id="toctree-checkbox-35" name="toctree-checkbox-35" role="switch" type="checkbox"/><label for="toctree-checkbox-35"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-midi/automation-midi.html">Pitch Bend &amp; Aftertouch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../automation/midi-scenes.html">MIDI Scene Automation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../midi-tracer.html">MIDI Tracer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../clips/index.html">Clips</a><input aria-label="Toggle navigation of Clips" class="toctree-checkbox" id="toctree-checkbox-36" name="toctree-checkbox-36" role="switch" type="checkbox"/><label for="toctree-checkbox-36"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../clips-overview.html">Clips Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clips-in-the-editor.html">Clips in the Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clips-in-the-cue-window.html">Clips in the Cue Window</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../adding-local-clip-libraries.html">Adding Local Clip Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing-custom-clips.html">Managing Custom Clips</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cue/index.html">Cue</a><input aria-label="Toggle navigation of Cue" class="toctree-checkbox" id="toctree-checkbox-37" name="toctree-checkbox-37" role="switch" type="checkbox"/><label for="toctree-checkbox-37"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cue/non-linear-workflow-principles.html">Non-Linear Workflow Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cue/cue-window-elements.html">Cue window elements</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cue/setting-up-cues/index.html">Setting Up Cues</a><input aria-label="Toggle navigation of Setting Up Cues" class="toctree-checkbox" id="toctree-checkbox-38" name="toctree-checkbox-38" role="switch" type="checkbox"/><label for="toctree-checkbox-38"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cue/setting-up-cues/populating-the-cue-grid.html">Populating the Cue Grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cue/setting-up-cues/playing-back-the-cues.html">Playing Back the Cues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cue/setting-up-cues/clip-properties.html">Setting Up Clip Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cue/setting-up-cues/clip-launch-options.html">Setting Up Launch Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cue/setting-up-cues/clip-follow-actions.html">Setting Up Follow Actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cue/setting-up-cues/clip-stretch-options.html">Setting Up Stretch Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cue/cue-recording.html">Recording cues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cue/cue-editing.html">Editing Cues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cue/mixing-linear-nonlinear-workflows.html">Mixing Linear and Non-Linear Workflows</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../arranging/index.html">Arranging</a><input aria-label="Toggle navigation of Arranging" class="toctree-checkbox" id="toctree-checkbox-39" name="toctree-checkbox-39" role="switch" type="checkbox"/><label for="toctree-checkbox-39"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../time-tempo-and-time-signature/index.html">Time, Tempo and Time Signature</a><input aria-label="Toggle navigation of Time, Tempo and Time Signature" class="toctree-checkbox" id="toctree-checkbox-40" name="toctree-checkbox-40" role="switch" type="checkbox"/><label for="toctree-checkbox-40"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-tempo-and-meter.html">Tempo and Time Signature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../techniques-for-working-with-tempo-and-time-signature.html">Techniques for Working with Tempo and Time Signature</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../mixing/index.html">Mixing</a><input aria-label="Toggle navigation of Mixing" class="toctree-checkbox" id="toctree-checkbox-41" name="toctree-checkbox-41" role="switch" type="checkbox"/><label for="toctree-checkbox-41"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../basic-mixing/index.html">Basic Mixing</a><input aria-label="Toggle navigation of Basic Mixing" class="toctree-checkbox" id="toctree-checkbox-42" name="toctree-checkbox-42" role="switch" type="checkbox"/><label for="toctree-checkbox-42"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../meters.html">Metering in Ardour</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../meterbridge.html">Meterbridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signal-routing.html">Signal Routing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bundle-manager.html">Bundle Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signal-routing/aux-sends.html">Aux Sends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signal-routing/comparing-aux-sends-and-subgroups.html">Comparing Aux Sends and Subgroups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signal-routing/external-sends.html">External Sends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signal-routing/inserts.html">Inserts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signal-routing/subgrouping.html">Subgrouping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signal-routing/Patchbay.html">Patchbay</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signal-routing/signal-flow.html">Track/Bus Signal Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../signal-routing/sidechaining.html">Sidechaining</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mixing/muting-and-soloing.html">Muting and Soloing</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../mixing/panning/index.html">Panning</a><input aria-label="Toggle navigation of Panning" class="toctree-checkbox" id="toctree-checkbox-43" name="toctree-checkbox-43" role="switch" type="checkbox"/><label for="toctree-checkbox-43"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l4"><a class="reference internal" href="../mixing/panning/mono_panner.html">Mono Panner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../mixing/panning/balance_control.html">Balance Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../mixing/panning/stereo_panner.html">Stereo Panner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../mixing/panning/vbap_panner.html">VBAP Panner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../mixing/mixer-scenes.html">Mixer Scenes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../mixing/saving-importing-mixer-strips.html">Saving and Importing Mixer Strips</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../loudness-analyzer-and-normalizer.html">Loudness Analyzer and Normalizer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../realtime-perceptual-analyzer.html">Realtime Perceptual Analyzer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../plugin-and-hardware-inserts/index.html">Plugin and Hardware Inserts</a><input aria-label="Toggle navigation of Plugin and Hardware Inserts" class="toctree-checkbox" id="toctree-checkbox-44" name="toctree-checkbox-44" role="switch" type="checkbox"/><label for="toctree-checkbox-44"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-plugins.html">Working With Plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-plugins/processor-box.html">Processor Box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-plugins/plugin-selector.html">Plugin Selector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-plugins/plugin-manager.html">Plugin Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-plugins/managing-plugin-presets.html">Managing Plugin Presets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../working-with-plugins/working-with-ardour-built-plugin-editors.html">Working with Ardour-built Plugin Editors</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../automation/index.html">Automation</a><input aria-label="Toggle navigation of Automation" class="toctree-checkbox" id="toctree-checkbox-45" name="toctree-checkbox-45" role="switch" type="checkbox"/><label for="toctree-checkbox-45"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../automation-nomenclature.html">Automation Nomenclature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../automation-states.html">Automation States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../automation-lanes.html">Automation Lanes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../automation-curves.html">Automation Curves</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../automation-modes.html">Automation Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../controlling-a-track-with-automation.html">Controlling a Track with Automation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../applying-effects-to-regions-separately.html">Applying effects to regions separately</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../bundled-plugins/index.html">Bundled Plugins</a><input aria-label="Toggle navigation of Bundled Plugins" class="toctree-checkbox" id="toctree-checkbox-46" name="toctree-checkbox-46" role="switch" type="checkbox"/><label for="toctree-checkbox-46"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../plugins-filters.html">Filters and Effects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins-instruments.html">Instruments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins-utilities.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../plugins-inline-scopes.html">Inline Scopes</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../video/index.html">Video</a><input aria-label="Toggle navigation of Video" class="toctree-checkbox" id="toctree-checkbox-47" name="toctree-checkbox-47" role="switch" type="checkbox"/><label for="toctree-checkbox-47"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../video-timeline.html">Video Timeline and Monitoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../video-timeline/setup.html">Video Timeline Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../video-timeline/transcoding_formats_codecs.html">Transcoding, Formats and Codecs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../video-timeline/operations.html">Workflow and Operations</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../using-control-surfaces/index.html">Control Surfaces</a><input aria-label="Toggle navigation of Control Surfaces" class="toctree-checkbox" id="toctree-checkbox-48" name="toctree-checkbox-48" role="switch" type="checkbox"/><label for="toctree-checkbox-48"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../using-control-surfaces/Ableton_Push2.html">Using the Ableton Push 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../using-control-surfaces/Countour_Design.html">Using the Contour Design Shuttle Devices</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../using-control-surfaces/midi-binding-maps/index.html">Generic MIDI</a><input aria-label="Toggle navigation of Generic MIDI" class="toctree-checkbox" id="toctree-checkbox-49" name="toctree-checkbox-49" role="switch" type="checkbox"/><label for="toctree-checkbox-49"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/generic-midi/midi-binding-maps.html">Generic MIDI Binding Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/generic-midi/midi-learn.html">Generic MIDI Learn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/generic-midi/working-with-encoders.html">Generic MIDI and Encoders</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../using-control-surfaces/mackie-control-protocol/index.html">Mackie Control Devices</a><input aria-label="Toggle navigation of Mackie Control Devices" class="toctree-checkbox" id="toctree-checkbox-50" name="toctree-checkbox-50" role="switch" type="checkbox"/><label for="toctree-checkbox-50"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/devices-using-mackielogic-control-protocol.html">Devices Using Mackie/Logic Control Protocol</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/mackie-control-protocol/ssl-nucleus.html">SSL Nucleus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/mackie-control-protocol/behringer-devices-in-mackielogic-control-mode.html">Behringer Devices in Mackie/Logic Control Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/mackie-control-protocol/devices-not-listed.html">What to do if your Device is not Listed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/mackie-control-protocol/working-with-extenders.html">Working With Extenders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/Launch_Control_XL.html">Using the Novation Launch Control XL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/Launchkey_mk4.html">Using the Novation Launchkey mk4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/Launchpad_Pro.html">Using the Novation Launchpad Pro Mk3</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../using-control-surfaces/controlling-ardour-with-osc/index.html">Open Sound Control (OSC)</a><input aria-label="Toggle navigation of Open Sound Control (OSC)" class="toctree-checkbox" id="toctree-checkbox-51" name="toctree-checkbox-51" role="switch" type="checkbox"/><label for="toctree-checkbox-51"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/controlling-ardour-with-osc/osc-control.html">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/controlling-ardour-with-osc/osc-setup-dialog.html">Using the setup dialog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/controlling-ardour-with-osc/linking-surfaces.html">Linking Surfaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/controlling-ardour-with-osc/querying-ardour-with-osc.html">Querying Ardour</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/controlling-ardour-with-osc/feedback-in-osc.html">Feedback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/controlling-ardour-with-osc/calculating-feedback-and-strip-types-values.html">Feedback and strip-types values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/controlling-ardour-with-osc/jog-modes.html">Jog Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/controlling-ardour-with-osc/custom-strips.html">Custom Strip Lists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/controlling-ardour-with-osc/automation.html">Automation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/controlling-ardour-with-osc/osc-personal-monitoring.html">Personal Monitoring Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/controlling-ardour-with-osc/parameter-types-in-osc.html">Parameter Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/controlling-ardour-with-osc/selection-considerations-in-osc.html">Selection and Expansion Considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/Presonus_FaderPort.html">Using the PreSonus FaderPort</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/PreSonus_FaderPort8.html">Using the PreSonus FaderPort 2/8/16</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/Softube_Console1.html">Using the Softube Console1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/Steinberg_CC121.html">Using the Steinberg CC121</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/Tascam_US-2400.html">Using the Tascam US-2400</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/websockets-server.html">Using the WebSockets Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-control-surfaces/mcp-http.html">Using the MCP HTTP Surface</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../troubleshooting/index.html">Troubleshooting</a><input aria-label="Toggle navigation of Troubleshooting" class="toctree-checkbox" id="toctree-checkbox-52" name="toctree-checkbox-52" role="switch" type="checkbox"/><label for="toctree-checkbox-52"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/plugin-dsp-load.html">Plugin DSP Load</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/performance-meters.html">Performance Meters</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../scripting/index.html">Scripting</a><input aria-label="Toggle navigation of Scripting" class="toctree-checkbox" id="toctree-checkbox-53" name="toctree-checkbox-53" role="switch" type="checkbox"/><label for="toctree-checkbox-53"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lua-scripting.html">Lua Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lua-scripting/class_reference.html">Lua Bindings Class Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/index.html">Appendix</a><input aria-label="Toggle navigation of Appendix" class="toctree-checkbox" id="toctree-checkbox-54" name="toctree-checkbox-54" role="switch" type="checkbox"/><label for="toctree-checkbox-54"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/menu-actions-list.html">List of Menu Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../default-keyboard-shortcuts.html">Default Keyboard Shortcuts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/monitor-modes.html">Ardour Monitor Modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/files-and-directories.html">Files and Directories Ardour Knows About</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../midi-notes-reference.html">MIDI Notes Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../midnam-reference.html">MIDNAM Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working-with-plugins/getting-plugins.html">Getting More Plugins</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/brucekomike/ardour-manual-converter/blob/gh-pages/docs/source/preferences-and-session-properties/preferences-dialog.md?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/brucekomike/ardour-manual-converter/edit/gh-pages/docs/source/preferences-and-session-properties/preferences-dialog.md" rel="edit" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle" aria-label="Toggle Light / Dark / Auto color theme">
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section class="tex2jax_ignore mathjax_ignore" id="preferences">
+<h1>Preferences<a class="headerlink" href="#preferences" title="Link to this heading">¶</a></h1>
+<p>Global <span class="dfn">preferences</span> control general workflow and system
+configuration, and should apply to all sessions. They are located in
+<span class="kbd menu">Edit &gt; Preferences</span> and stored in Ardour’s <span class="dfn">user
+configuration file</span> in the user’s home directory.</p>
+<figure class="right">
+<img src="https://raw.githubusercontent.com/Ardour/manual/refs/heads/master/source/images/preferences.png" class="mini" style="width:600px;"
+alt="The Preferences window" />
+<figcaption aria-hidden="true">The Preferences window</figcaption>
+</figure>
+<p>Settings can be searched for using the input box in the lower left
+corner of the Preferences window. Typing in a keyword and pressing
+<span class="kbd">Enter</span> will open the Preferences pages where the first occurrence
+of the keyword is available, the setting will be highlighted. Pressing
+<span class="kbd">Enter</span> again will highlight the next occurrence (where
+available).</p>
+<p>Preferences are conveniently grouped by category:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#preferences-general">General</a></p></li>
+<li><p><a class="reference internal" href="#preferences-appearance">Appearance</a></p></li>
+<li><ul>
+<li><p><a class="reference internal" href="#preferences-appearance-recorder">Recorder</a></p></li>
+<li><p><a class="reference internal" href="#preferences-appearance-editor">Editor</a></p></li>
+<li><p><a class="reference internal" href="#preferences-appearance-waveform">Waveform</a></p></li>
+<li><p><a class="reference internal" href="#preferences-appearance-mixer">Mixer</a></p></li>
+<li><p><a class="reference internal" href="#preferences-appearance-application-bar">Application Bar</a></p></li>
+<li><p><a class="reference internal" href="#preferences-appearance-size-and-scale">Size and Scale</a></p></li>
+<li><p><a class="reference internal" href="#preferences-appearance-colors">Colors</a></p></li>
+<li><p><a class="reference internal" href="#preferences-appearance-quirks">Quirks</a></p></li>
+<li><p><a class="reference internal" href="#preferences-appearance-translation">Translation</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#preferences-editor">Editor</a></p></li>
+<li><ul>
+<li><p><a class="reference internal" href="#preferences-editor-snap">Snap</a></p></li>
+<li><p><a class="reference internal" href="#preferences-editor-modifiers">Modifiers</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#preferences-midi">MIDI</a></p></li>
+<li><ul>
+<li><p><a class="reference internal" href="#preferences-midi-port-config">MIDI Port Config</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#preferences-transport">Transport</a></p></li>
+<li><ul>
+<li><p><a class="reference internal" href="#preferences-transport-chase">Chase</a></p></li>
+<li><p><a class="reference internal" href="#preferences-transport-generate">Generate</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#preferences-plugins">Plugins</a></p></li>
+<li><ul>
+<li><p><a class="reference internal" href="#preferences-plugins-gui">GUI</a></p></li>
+<li><p><a class="reference internal" href="#preferences-plugins-vst">VST</a></p></li>
+<li><p><a class="reference internal" href="#preferences-plugins-audio-unit">Audio Unit</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#preferences-monitoring">Monitoring</a></p></li>
+<li><p><a class="reference internal" href="#preferences-signal-flow">Signal Flow</a></p></li>
+<li><p><a class="reference internal" href="#preferences-metronome">Metronome</a></p></li>
+<li><p><a class="reference internal" href="#preferences-control-surfaces">Control Surfaces</a></p></li>
+<li><p><a class="reference internal" href="#preferences-metering">Metering</a></p></li>
+<li><p><a class="reference internal" href="#preferences-performance">Performance</a></p></li>
+<li><p><a class="reference internal" href="#preferences-video">Video</a></p></li>
+<li><p><a class="reference internal" href="#preferences-triggering">Triggering</a></p></li>
+</ul>
+<section id="general">
+<h2>General<a class="headerlink" href="#general" title="Link to this heading">¶</a></h2>
+<ul class="clear simple" id="preferences-general">
+<li><p><span class="dfn">Audio/MIDI Setup</span></p>
+<ul>
+<li><p><span class="dfn">Show Audio/MIDI Setup window</span> Shows the <a class="reference internal" href="#&#64;&#64;audio-midi-setup"><span class="xref myst">Audio/MIDI
+Setup</span></a> dialog.</p></li>
+<li><p><span class="dfn">Try to auto-launch audio/midi engine</span> allows Ardour to
+try to automatically launch the audio and MIDI system, driver
+and device, thus not showing the <a class="reference internal" href="#&#64;&#64;audio-midi-setup"><span class="xref myst">Audio/MIDI
+Setup</span></a> dialog. This can save a little time
+if the system is always used the same way.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Editor Undo</span> defines the behaviour of the Undo operations:</p>
+<ul>
+<li><p><strong>Limit undo history</strong> sets how many commands can be undone
+using <span class="kbd mod1">Z</span> or <span class="kbd menu">Edit &gt; Undo</span>. Unchecking
+will keep an endless memory of operations to undo, at the
+expense of memory.</p></li>
+<li><p><strong>Save undo history</strong> sets how many commands are saved so they
+are available to be undone after reopening the session. This can
+also be unchecked to keep all actions undoable, at the cost of
+bigger session files.</p></li>
+<li><p><strong>Verify removal of last capture</strong> when enabled prompts to
+verify removal the last recording capture when <span class="kbd menu">Edit &gt; Remove
+Last Capture</span> is executed.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Session Management</span>:</p>
+<ul>
+<li><p><strong>Make periodic backups of the session file</strong> will create a
+backup session file after changes to the timeline. The backup
+file is the session name followed by <em>.ardour.bak</em>. The backup
+can be used to recover from crashes when the session had not
+been explicitly saved.</p></li>
+<li><p><strong>Default folder for new sessions:</strong> defaults the folder where
+Ardour will create new session folders. This is used in the
+<em>Session Setup</em> dialog displayed by <span class="kbd menu">Session &gt; New</span>.</p></li>
+<li><p><strong>Maximum number of recent sessions:</strong> determines how many of
+the last opened sessions shows in the <em>Recent Sessions</em> dialog
+displayed by <span class="kbd menu">Session &gt; Recent</span>.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Selection</span>:</p>
+<ul>
+<li><p><span class="dfn">Group operations on selected tracks:</span> this controls the
+behavior where selecting multiple tracks in the mixer and e.g.
+dragging the gain fader in one track drags faders in other
+selected tracks by the same amount.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Import</span>:</p>
+<ul>
+<li><p><strong>Drag and drop import always copies files to session</strong> selects,
+and then disables changes to, the <em>Copy files to session</em> option
+in the <a class="reference internal" href="#&#64;&#64;import-dialog"><span class="xref myst">Add Existing Media</span></a> dialog.</p></li>
+<li><p><strong>Cache Folder for downloaded Freesound clips</strong>: when you try
+sounds form <a class="reference external" href="http://FreeSound.org">FreeSound.org</a> before inserting them into the
+project, they need to be saved locally on your computer; this is
+where you define the folder for those temporary files.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Export</span></p>
+<ul>
+<li><p><span class="dfn">Save loudness analysis as image file after export</span>
+allows, when the <span class="kbd option">Analyze Exported Audio</span> is
+checked in the <a class="reference internal" href="#&#64;&#64;export-dialog"><span class="xref myst">Export dialog</span></a>, to save the
+analysis graph as a file named <code class="docutils literal notranslate"><span class="pre">session.png</span></code> alongside the
+exported audio file(s) (in the same folder).</p></li>
+<li><p><span class="dfn">Save Mixer screenshot after export</span> creates and exports a
+graphical image of the Mixer window as a file named
+<code class="docutils literal notranslate"><span class="pre">session-mixer.png</span></code> alongside the exported audio file(s) (in the
+same folder).</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">New Version Check</span></p>
+<ul>
+<li><p><span class="dfn">Check for announcements at application start</span> sends an
+anonymous request to Ardour’s server to check for a new
+version.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="appearance">
+<h2>Appearance<a class="headerlink" href="#appearance" title="Link to this heading">¶</a></h2>
+<ul class="simple" id="preferences-appearance">
+<li><p><span class="dfn">GUI Lock</span></p>
+<ul>
+<li><p><span class="dfn">Lock timeout (seconds)</span>: locks the GUI after this many
+idle seconds (zero being ‘never lock’). The GUI can also be
+locked with <span class="kbd menu">Session &gt; Lock</span>. When locked, a dialog
+will display a “Click to unlock” button.</p></li>
+<li><p><span class="dfn">System Screensaver Mode</span>: can be used to prevent the
+screensaver to be launched by the system, either while recording
+(e.g. for long and unattended recording session), when Ardour is
+simply started, or never (the screensaver is then able to
+start).</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Theme</span></p>
+<ul>
+<li><p><span class="dfn">Color faders with track/bus colors</span>: when enabled, fills
+faders for tracks and busses with respective track or bus
+colors.</p></li>
+<li><p><span class="dfn">Draw “flat” buttons</span>: when enabled, button controls in
+the user interface will be drawn with a flat look. When disabled
+button controls will have a slight 3D appearance.</p></li>
+<li><p><span class="dfn">Draw “boxy” buttons</span>: when enabled, button controls in
+the user interface will have square corners instead of being
+slightly rounded.</p></li>
+<li><p><span class="dfn">LED meter style</span> if checked, the bar meters in the editor
+and mixer will be styled to look like if they were made of LEDs,
+with a dotted bar. Unchecking this option makes the bars flat
+and continuous.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Graphical User Interface</span></p>
+<ul>
+<li><p><span class="dfn">Highlight widgets on mouseover</span>, when checked, makes
+Ardour’s widgets (buttons, sliders, …) slightly change color
+when the mouse hovers them, visually indicating what a mouse
+action would interact with.</p></li>
+<li><p><span class="dfn">Show tooltips if mouse hovers over a control</span> when
+checked, displays a little help bubble about the control the
+mouse hovers. The mouse pointer needs to stay idle for about 1
+sec for the tooltip to appear.</p></li>
+<li><p><span class="dfn">Update clocks at TC Frame rate</span>: Ardour updates its
+clocks every 100 ms. Checking this will make the clock refresh
+at every TimeCode frame which is more responsive, at the cost of
+a bit more system stress.</p></li>
+<li><p><span class="dfn">Blink Rec-Arm buttons</span>: when enabled, the record-armed
+buttons on tracks will blink when they are armed but not
+currently recording. When disabled, the record-armed buttons on
+tracks will be outlined in red instead of blinking. The global
+record-arm button in the <a class="reference internal" href="#&#64;&#64;transport-bar"><span class="xref myst">Transport bar</span></a> is
+unaffected.</p></li>
+<li><p><span class="dfn">Blink Alert indicators</span>: when enabled, the Alert
+indicators (like the <span class="kbd menu">Error Log</span> or the
+<span class="kbd menu">Feedback</span> button) will blink when they are active
+(when an error or feedback has been detected, respectively).
+When disabled, the indicators will turn red instead of blinking.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Graphics Acceleration</span></p>
+<ul>
+<li><p><span class="dfn">Use intermediate image-surface to render canvas (requires
+restart)</span>: Ardour uses hardware accelerated UI rendering
+by default for speed. Sometimes though, a buggy driver can cause
+this to make the system slow or unstable. Checking this will
+make Ardour draw its UI without hardware acceleration, in
+software, improving stability and responsiveness on those buggy
+systems at the expense of speed.</p></li>
+</ul>
+</li>
+</ul>
+<section id="recorder">
+<h3>Recorder<a class="headerlink" href="#recorder" title="Link to this heading">¶</a></h3>
+<ul class="simple" id="preferences-appearance-recorder">
+<li><p><span class="dfn">Input Meter Layout</span></p>
+<ul>
+<li><p><span class="dfn">Input Meter Layout</span>: in Recorder mode, determines if
+audio inputs are displayed horizontally or vertically.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="editor">
+<h3>Editor<a class="headerlink" href="#editor" title="Link to this heading">¶</a></h3>
+<ul class="simple" id="preferences-appearance-editor">
+<li><p><span class="dfn">General</span></p>
+<ul>
+<li><p><span class="dfn">Use name highlight bars in region displays (requires a
+restart)</span>: when enabled, the region name is displayed, in
+the editor, in its own opaque bar at the bottom of the region.
+When disabled, the region name is overlaid at the top of the
+region, possibly over audio waveforms or MIDI notes.</p></li>
+<li><p><span class="dfn">Region color follows track color</span>: when enabled, the
+background color of regions in the editor will be displayed
+using the color assigned to the track. When disabled the default
+region background color will be used.</p></li>
+<li><p><span class="dfn">Show Region Names</span>: when enabled, overlays the name of
+the region over its waveform representation, in the top-left.</p></li>
+<li><p><span class="dfn">Waveforms color gradient depth:</span> determines how much
+gradient effect is applied to the inner of audio waveforms
+displayed in the editor. Values range from 0.0, no gradient
+effect, to 1.0, maximum effect.</p></li>
+<li><p><span class="dfn">Timeline item gradient depth:</span> Determines how much
+gradient effect is applied to the backgrounds of regions
+displayed in the editor. Values range from 0.0, no gradient
+effect, to 1.0, maximum effect.</p></li>
+<li><p><span class="dfn">Track name ellipsize mode:</span> when the track header is not
+wide enough to display the track’s name in full, selects how
+the name will be shorten between:</p>
+<ul>
+<li><p><em>Ellipsize start of name</em> will show only the end of the name</p></li>
+<li><p><em>Ellipsize middle of name</em> will show only the start and end
+of the name</p></li>
+<li><p><em>Ellipsize end of name</em> will show only the start of the name</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Add a visual gap below Audio Regions:</span> selects whether or
+not the audio regions fit the height of the track or leave a gap
+at the bottom, either small or large.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Editor Meters</span></p>
+<ul>
+<li><p><span class="dfn">Show meters in track headers</span>: when enabled, shows a
+small meter in the Editor’s <a class="reference internal" href="#&#64;&#64;audio-track-controls"><span class="xref myst">track
+headers</span></a>. The meter is shown on the
+right side area of the header and provides an instant, if
+imprecise, view of the levels on this track/bus.</p></li>
+<li><p><span class="dfn">Limit track header meters to stereo</span>: if a track has more
+than two outputs (e.g. with a drum plugin), limits the number of
+meters in the track header to the first two ones. Only affects
+audio meters, not MIDI.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">MIDI Regions</span></p>
+<ul>
+<li><p><span class="dfn">Display first MIDI bank/program as 0</span>: when patches and
+bank changes are displayed in the editor, if this option is
+checked, the numbering will be zero-based instead of one-based,
+i.e. banks/programs will be numbered O, 1 ,2… instead of 1, 2,
+3…</p></li>
+<li><p><span class="dfn">Don’t display periodic (MTC, MMC) SysEx messages in MIDI
+Regions</span>: if checked, will hide these control messages
+from the MIDI regions for better legibility.</p></li>
+<li><p><span class="dfn">Show velocity horizontally inside notes</span>: when on, each
+note of a MIDI region (in <em>Sustained</em> mode) displays its
+velocity (0-127) with a darker fill proportional to its value.</p></li>
+<li><p><span class="dfn">Use colors to show note velocity</span>: if checked, makes the
+saturation of the notes color proportional to its velocity,
+hence making a more veloce note more intense in color.</p></li>
+<li><p><span class="dfn">Display note names in track headers</span>: allows selecting in
+which scenario Ardour will display note names:</p>
+<ul>
+<li><p><em>Always</em> — Ardour will always try to display note names
+regardless of whether they are available through a MIDNAM
+file.</p></li>
+<li><p><em>When Available</em> — Ardour will only show note names when
+they are provided in a MIDNAM file.</p></li>
+<li><p><em>Never</em> — Ardour will never display note names.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="waveform">
+<h3>Waveform<a class="headerlink" href="#waveform" title="Link to this heading">¶</a></h3>
+<ul class="simple" id="preferences-appearance-waveform">
+<li><p><span class="dfn">Editor Waveforms</span></p>
+<ul>
+<li><p><span class="dfn">Show waveforms in regions</span>: when enabled, shows a visual
+representation of the region’s audio waveform.</p></li>
+<li><p><span class="dfn">Show waveforms while recording</span>: when enabled, will draw
+the audio waveform in regions being recorded, in near real time.
+When disabled, only a region block will be drawn while
+recording, reducing CPU requirements.</p></li>
+<li><p><span class="dfn">Show waveform clipping</span>: when enabled, the waveform
+displayed will show peaks marked in red if they exceed the clip
+level.</p></li>
+<li><p><span class="dfn">Waveform Clip Level (dBFS)</span>: sets the level at which the
+waveform shown in an audio region will be drawn in red to
+indicate clipping. Setting lower than 0.0 dBFS can be useful if
+any tool in the audio chain has problems near 0.0 dBFS.</p></li>
+<li><p><span class="dfn">Waveform scale</span>: when waveforms are shown in audio
+regions, they can be displayed using a <em>linear</em> or a
+<em>logarithmic</em> scale. See <a class="reference internal" href="#&#64;&#64;waveform-display"><span class="xref myst">Waveform display</span></a>.</p></li>
+<li><p><span class="dfn">Waveform shape</span>: when waveforms are shown in audio
+regions, they can be displayed using a <em>traditional</em> or a
+<em>rectified</em> shape. See <a class="reference internal" href="#&#64;&#64;waveform-display"><span class="xref myst">Waveform display</span></a>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="mixer">
+<h3>Mixer<a class="headerlink" href="#mixer" title="Link to this heading">¶</a></h3>
+<ul class="simple" id="preferences-appearance-mixer">
+<li><p><span class="dfn">Mixer Strip</span></p>
+<ul>
+<li><p>This table enables (checked) or disables (unchecked) the display
+of controls in the <a class="reference internal" href="#&#64;&#64;audiomidi-mixer-strips"><span class="xref myst">mixer strip</span></a>.
+Controls whose display can be toggled are: <strong>Input</strong>,
+<strong>Phase Invert</strong>, <strong>Record &amp; Monitor</strong>, <strong>Solo Iso/Lock</strong>,
+<strong>Output</strong>, <strong>Comments</strong> and VCA Assigns.</p></li>
+<li><p><span class="dfn">Use narrow strips in the mixer for new strips by default</span>
+When enabled, new mixer strips are created in narrow format.
+When disabled, they are created in wide format. Existing mixer
+strips width can be toggled with the width control at the top
+left of the mixer strip.</p></li>
+<li><p><span class="dfn">Limit inline-mixer-strip controls per plugin :</span> Whether
+or not, and how many, controls each plugin can show in the mixer
+strip. These mixer-strip controls are added by checking <em>plugin
+context-menu &gt; Controls &gt; □ control parameter</em>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="application-bar">
+<h3>Application Bar<a class="headerlink" href="#application-bar" title="Link to this heading">¶</a></h3>
+<ul class="simple" id="preferences-appearance-application-bar">
+<li><p><span class="dfn">Main Transport Toolbar Items</span>: this section allows to toggle
+the visibility of some elements of the application bar:</p>
+<ul>
+<li><p><span class="dfn">Display Record/Punch Options</span> toggles the visibility of
+the <a class="reference internal" href="#&#64;&#64;selection-and-punch-clocks#punch_controls"><span class="xref myst">punch and
+record</span></a> slice of
+the application bar.</p></li>
+<li><p><span class="dfn">Display Plugin Delay Compensation Info</span> toggles the
+visibility of the Latency Compensation slice of the application
+bar.</p></li>
+<li><p><span class="dfn">Display Secondary Clock</span> toggles the visibility of the
+<a class="reference internal" href="#&#64;&#64;transport-clocks"><span class="xref myst">secondary clocks</span></a> slice of the application
+bar.</p></li>
+<li><p><span class="dfn">Display Cue Rec/Play Controls</span> toggles the visibility of
+the buttons that enable creating and playing back cue markers.</p></li>
+<li><p><span class="dfn">Display Selection Clock</span> toggles the visibility of the
+<a class="reference internal" href="#&#64;&#64;selection-and-punch-clocks#selection_clocks"><span class="xref myst">selection
+clocks</span></a> slice of
+the application bar.</p></li>
+<li><p><span class="dfn">Display Navigation Timeline</span> toggles the visibility of
+the <a class="reference internal" href="#&#64;&#64;mini-timeline"><span class="xref myst">navigation/mini timeline</span></a> slice of the
+application bar.</p></li>
+<li><p><span class="dfn">Display Master Level Meter</span> toggles the visibility of the
+<a class="reference internal" href="#&#64;&#64;other-toolbar-items#mode_selector"><span class="xref myst">selection clocks</span></a> slice of
+the application bar.</p></li>
+<li><p><span class="dfn">Display Monitor Section Info</span> toggles the visibility of
+the Monitor Info slice of the application bar.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Display Action-Buttons</span></p>
+<ul>
+<li><p><span class="dfn">Column <em>n</em></span> enables or disables the visibility of the six
+possible columns of <a class="reference internal" href="#&#64;&#64;other-toolbar-items#mode_selector"><span class="xref myst">Lua script
+buttons</span></a>. Each columns
+contains two user-assignable buttons.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="size-and-scale">
+<h3>Size and Scale<a class="headerlink" href="#size-and-scale" title="Link to this heading">¶</a></h3>
+<ul class="simple" id="preferences-appearance-size-and-scale">
+<li><p><span class="dfn">User Interface Size and Scale</span></p>
+<ul>
+<li><p><span class="dfn">GUI and Font scaling</span>: allows the display size of most of
+the text and buttons in the user interface to be scaled up or
+down. May require a restart to take effect.</p></li>
+<li><p><span class="dfn">Drag deadzone</span>: provides broad control over how many
+pixels the pointer must move before a drag (or copy-drag)
+begins.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="colors">
+<h3>Colors<a class="headerlink" href="#colors" title="Link to this heading">¶</a></h3>
+<ul class="simple" id="preferences-appearance-colors">
+<li><p><span class="dfn">Colors</span></p>
+<ul>
+<li><p><span class="dfn">Color Theme</span> allows to switch between some presets
+bundled with Ardour, changing both the palette and items colors,
+hence styling Ardour all at once.</p></li>
+<li><p>The table allows to change the color settings in Ardour by
+acting on three parameters:</p>
+<ul>
+<li><p><span class="dfn">Items</span> that allow to choose any color from the
+palette (see below) to color a UI element. Clicking on a
+color sample in the <strong>Color</strong> column bring up the Palette,
+to choose from.</p></li>
+<li><p><span class="dfn">Palette</span> that allows to create a set of colors that
+will be used in the UI. Using a palette allows for better
+consistency, instead of picking “free” colors for each UI
+element. Clicking on a color patch brings up a full color
+selector, to assign this color to this patch of the palette.</p></li>
+<li><p><span class="dfn">Transparency</span> where possible, allows to select, with
+a slider, the transparency of the UI element, with 0 (slider
+to the left) being fully opaque.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Restore Defaults</span> turns all the palette, item colors and
+transparency back to Ardour’s default base setting, in case
+Ardour’s appearance has turned into a toddler’s toy.</p></li>
+<li><p><span class="dfn">Use color-palette to assign color for new tracks</span> enables
+color-coding of tracks by picking colors from a fixed palette
+and assigning them to regions’ backgrounds and, optionally, to
+respective faders of tracks and busses (there is a dedicated
+setting for that). When disabled, all regions (and faders) have
+a neutral gray background.</p></li>
+<li><p><span class="dfn">Use color-palette to assign color for new busses</span> does
+the same as the setting above, but with regards to busses.</p></li>
+<li><p><span class="dfn">Use color-palette to assign color for new VCA</span> does the
+same as the setting above, but with regards to VCAs.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="quirks">
+<h3>Quirks<a class="headerlink" href="#quirks" title="Link to this heading">¶</a></h3>
+<ul class="simple" id="preferences-appearance-quirks">
+<li><p><span class="dfn">Various Workarounds for Windowing Systems</span>: As Ardour is
+available on a number of platforms and windowing systems, some
+specific workarounds are sometimes required to provide a smooth
+experience to the user.</p>
+<ul>
+<li><p><span class="dfn">Use visibility information provided by your Window
+Manager/Desktop</span> allows the system window manager’s rules
+for the windows visibility to supersede Ardour’s.</p></li>
+<li><p><span class="dfn">Show/Hide splash screen instead of setting z-axis stack
+order</span>: Hides the splash instead of re-layering it. This
+setting requires a restart of Ardour to take effect.</p></li>
+<li><p><span class="dfn">All floating windows are dialogs</span>: when enabled, Ardour
+will use type “Dialog” for all floating windows instead of
+using type “Utility” for some of them. This may help usability
+with some window managers. This setting requires a restart of
+Ardour to take effect.</p></li>
+<li><p><span class="dfn">Transient windows follow front window.</span>: when enabled,
+transient windows will follow the front window when toggling
+between the editor and mixer. This setting requires a restart of
+Ardour to take effect.</p></li>
+<li><p><span class="dfn">Float detached monitor-section window</span>: as the <a class="reference internal" href="#&#64;&#64;monitor-section"><span class="xref myst">monitor
+section</span></a> can be detached from the mixer, this
+option makes it a floating window, which may be handled
+differently by the windowing system and easier to access.</p></li>
+<li><p><span class="dfn">Allow to resize Engine Dialog</span>: allow to resize the
+engine dialog window to work around a bug on some XWayland
+systems that render this dialog as blank.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="translation">
+<h3>Translation<a class="headerlink" href="#translation" title="Link to this heading">¶</a></h3>
+<ul class="simple" id="preferences-appearance-translation">
+<li><p><span class="dfn">Internationalization</span></p>
+<ul>
+<li><p><span class="dfn">Use translations</span> sets if Ardour should use a translated
+version of all the messages. The default (unchecked) is English
+(US). When checked, and if a language file exists for the system
+language, this file will be used to translate Ardour.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="regions">
+<h3>Regions<a class="headerlink" href="#regions" title="Link to this heading">¶</a></h3>
+<ul class="simple" id="preferences-appearance-regions">
+<li><p><span class="dfn">Region Information</span></p>
+<ul>
+<li><p><span class="dfn">Show xrun markers in regions</span> puts a marker on the
+region(s) while recording, when a buffer over/underflow happens.</p></li>
+<li><p><span class="dfn">Show cue markers in regions</span> determines if cue markers,
+that are bounded to regions, are displayed or not.</p></li>
+<li><p><span class="dfn">Show gain envelopes in audio regions:</span> sets in which
+<a class="reference internal" href="#&#64;&#64;toolbox"><span class="xref myst">modes</span></a> the gain envelope is displayed in audio
+regions. The gain envelope is superimposed over the region in
+the selected modes, and hidden otherwise for a better
+legibility.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="id1">
+<h2>Editor<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<ul class="simple" id="preferences-editor">
+<li><p><span class="dfn">Scroll and Zoom Behaviors</span></p>
+<ul>
+<li><p><span class="dfn">Zoom to mouse position when zooming with scroll wheel</span>:
+by default, Ardour zooms to the <a class="reference internal" href="#&#64;&#64;edit-point-control"><span class="xref myst">edit
+point</span></a>. When this option is checked, and
+the zoom is done with <span class="kbd mod1n"></span> + mousewheel, the zoom
+will happen at the mouse cursor position regardless of the edit
+point chosen.</p></li>
+<li><p><span class="dfn">Zoom with vertical drag in rulers</span> allows, when checked,
+to click anywhere in an empty zone of the <a class="reference internal" href="#&#64;&#64;ruler"><span class="xref myst">ruler</span></a> zone
+and drag up to zoom in or down to zoom out.</p></li>
+<li><p><span class="dfn">Double click zooms to selection</span> allows by double
+clicking, to zoom on the selection, both on the time and tracks
+axes. If the selection has been done with <span class="kbd mod1n"></span> or
+<span class="kbd mod3n"></span>, then this key should still be pressed when
+double clicking for this to work, otherwise the first click
+breaks the group selection.</p></li>
+<li><p><span class="dfn">Update editor window during drags of the summary</span>: when
+enabled the contents of the editor window will redraw the tracks
+area as the selection rectangle in the <a class="reference internal" href="#&#64;&#64;summary"><span class="xref myst">summary</span></a> area
+is moved or resized.</p></li>
+<li><p><span class="dfn">Auto-scroll editor window when dragging near its edges</span>
+when enabled will scroll the editor window automatically when
+dragging a region. This can make it easier to see where to
+position the region.</p></li>
+<li><p><span class="dfn">Auto-scroll speed when dragging playhead:</span> chooses how
+fast the canvas scrolls when dragging the playhead outside of
+the visible canvas.</p></li>
+<li><p><span class="dfn">Limit zoom &amp; summary view beyond session extents to:</span>
+prevents the zoom out both in the editor and the summary, to
+show anything past the chosen time after the end marker,
+restraining the vision to only useful content.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Editor Behaviour</span></p>
+<ul>
+<li><p><span class="dfn">Move relevant automation when audio regions are moved</span>,
+when enabled, causes automation data to stay with a region when
+the region is moved inside the playlist. When disabled, the
+automation is not affected by movement of regions.</p></li>
+<li><p><span class="dfn">Ignore Y-axis click position when adding new
+automation-points</span> allows to create new automation points
+at the x-position of the mouse, without using the Y-position as
+the value, hence creating a new automation point at its present
+value.</p></li>
+<li><p><span class="dfn">Automation edit cancels auto hide</span> determines whether
+automation lanes that have been automatically shown because of
+the <span class="kbd option">Edit &gt; Show Automation Lane on Touch</span> option
+should be kept visible if the automation has been touched.</p></li>
+<li><p><span class="dfn">Default fade shape:</span> sets which <a class="reference internal" href="#&#64;&#64;create-region-fades-and-crossfades"><span class="xref myst">fade
+shape</span></a> is the default.</p></li>
+<li><p><span class="dfn">Regions in edit groups are edited together:</span> sets the
+criteria to see if editing actions apply to tracks grouped
+together in an group.</p></li>
+<li><p><span class="dfn">Layering model:</span> Ardour allows
+<a class="reference internal" href="#&#64;&#64;layering-display"><span class="xref myst">layering</span></a> multiple regions in the same
+track. This selector defines how these layers are managed,
+either manually or by placing the latest on top.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Split/Separate</span></p>
+<ul>
+<li><p><span class="dfn">After a Separate operation, in Range mode:</span> determines
+what should become of the Range selection after a Separate
+operation:</p>
+<ul>
+<li><p>Clear the Range Selection: nothing is selected anymore</p></li>
+<li><p>Preserve the Range Selection: the range selection is kept</p></li>
+<li><p>Force-Select the regions under the range: the regions that
+were in the range selection are selected in Grab/Object mode</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">After a Split operation, in Object mode:</span> determines
+which, if any, regions are selected after a split operation. The
+options are:</p>
+<ul>
+<li><p>Clear the Region Selection: nothing is selected anymore</p></li>
+<li><p>Select only the newly-created regions BEFORE the split
+point: if regions have been affected by the split, then the
+regions created by the split before the split point is
+selected</p></li>
+<li><p>Select only the newly-created regions BEFORE the split
+point: same as above, for the regions created after the
+split point</p></li>
+<li><p>Select the newly-created regions: sum of the two above, i.e.
+all the regions that are created as a result of the split
+are selected.</p></li>
+<li><p>Preserve the existing selection, AND select all
+newly-created regions: same as above (all the parts that
+have been created by the split) plus the unaffected regions
+that were selected before the split.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><span class="dfn">Region Editing</span></p>
+<ul>
+<li><p><span class="dfn">Region Editing Preference:</span> this controls whether
+double-clicking to edit a region opens a new window or uses the
+bottom panel of the editor.</p></li>
+</ul>
+</li>
+</ul>
+<section id="snap">
+<h3>Snap<a class="headerlink" href="#snap" title="Link to this heading">¶</a></h3>
+<ul class="simple" id="preferences-editor-snap">
+<li><p><span class="dfn">General Snap options</span> :</p>
+<ul>
+<li><p><span class="dfn">Snap Threshold (pixels):</span> is the maximum distance between
+a snap anchor and an object for Ardour to force the object to be
+placed precisely at that anchor.</p></li>
+<li><p><span class="dfn">Approximate Grid/Ruler granularity (pixels):</span> Ardour
+tries to show a reasonable number of grid lines at the current
+zoom level and in the available screen estate. This value tells
+Ardour what the approximate absolute distance between two
+closest grid lines should be, so that it displays the most
+relevant grid scale to approximately fit this distance.</p></li>
+<li><p><span class="dfn">Show “snapped cursor”</span> If the Edit point is not the
+playhead, shows the currently selected Edit point as a blue
+line, to indicate where the next editing operation will occur.</p></li>
+<li><p><span class="dfn">Snap rubberband selection to grid</span> makes the highlighted
+zone created by an area selection also snap to grid, i.e. the
+beginning and end of the resulting selecting box will both be
+grid anchors.</p></li>
+<li><p><span class="dfn">Grid switches to alternate selection for Internal Edit
+Tools</span>. Two levels of grid mode can coexist in Ardour, one
+for global regions manipulations, and one for finer, in-region
+editing (e.g. for placing MIDI events in a MIDI region). When
+this option is checked, entering Internal Edit mode makes the
+grid mode switch from one mode to the other.</p></li>
+<li><p><span class="dfn">Rulers automatically change to follow the Grid mode
+selection</span> If enabled, changing the Grid mode also makes
+the relevant <a class="reference internal" href="#&#64;&#64;ruler"><span class="xref myst">ruler</span></a> visible, while hiding the other
+ones.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Snap Target Mode</span>:</p>
+<ul>
+<li><p><span class="dfn">When “Snap” is enabled, snap to:</span> Lists the different
+possible anchors to which an object should snap to, among:</p>
+<ul>
+<li><p>Markers</p></li>
+<li><p>Playhead</p></li>
+<li><p>Region Sync points</p></li>
+<li><p>Region Starts</p></li>
+<li><p>Region Ends</p></li>
+<li><p>Grid</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><span class="dfn">Snap Targets</span></p>
+<ul>
+<li><p><span class="dfn">Markers</span>: whether markers are snap targets</p></li>
+<li><p><span class="dfn">Playhead</span>: whether the playhead is a snap targets</p></li>
+<li><p><span class="dfn">Region Sync Points</span>: whether region sync points are snap
+targets</p></li>
+<li><p><span class="dfn">Regions Starts</span>: whether regions starts are snap targets</p></li>
+<li><p><span class="dfn">Regions Ends</span>: whether regions ends are snap targets</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="modifiers">
+<h3>Modifiers<a class="headerlink" href="#modifiers" title="Link to this heading">¶</a></h3>
+<p id="preferences-editor-modifiers">This page allows to choose how things are done in the editor. This is a
+very flexible way for Ardour to match an existing workflow, or speed up
+the editing process based on the user’s most used actions.</p>
+<p>The <span class="kbd menu">Reset to recommended defaults</span> button at the bottom
+provides a way to revert any user made change to its default value.</p>
+</section>
+</section>
+<section id="midi">
+<h2>MIDI<a class="headerlink" href="#midi" title="Link to this heading">¶</a></h2>
+<ul class="simple" id="preferences-midi">
+<li><p><span class="dfn">Session</span></p>
+<ul>
+<li><p><span class="dfn">Allow non quarter-note pulse</span>: by default, Ardour
+understands the <a class="reference internal" href="#&#64;&#64;tempo-and-meter"><span class="xref myst">tempo</span></a> as the number of
+quarter notes in a minute. Checking this option allows to set
+the tempo based on any division of the note, from whole to
+1/128th. This is reflected in the <span class="kbd menu">Edit Tempo</span>
+window (accessed by double clicking a tempo marker) that shows a
+“Pulse” menu when this option is checked.</p></li>
+<li><p><span class="dfn">Initial program change:</span> Ardour will send a MIDI program
+change message on the <code class="docutils literal notranslate"><span class="pre">ardour:MMC</span> <span class="pre">out</span></code> MIDI port when a session
+is loaded and whenever this field is changed. A value of -1
+means don’t send any program change message.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Audition</span></p>
+<ul>
+<li><p><span class="dfn">Sound MIDI notes as they are selected in the editor</span> will
+play any selected or added MIDI note when in Draw or Internal
+Edit modes. The note is sent as MIDI as if Ardour was playing it
+with the session, so the processors and signal routing will be
+applied.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Virtual Keyboard</span></p>
+<ul>
+<li><p><span class="dfn">Virtual Keyboard Layout:</span> selects which (if any) computer
+keyboard layout is used to be mapped on the keys of the musical
+keyboard of the Virtual Keyboard (<span class="kbd menu">Window &gt; Virtual
+Keyboard</span>).</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Default Visible Note Range</span></p>
+<ul>
+<li><p><span class="dfn">Default lower visible MIDI note</span>: this note will be the
+lowest visible one on the timeline unless you tweak that by
+adjusting the vertical range. E.g. C4 is C on the fourth octave.</p></li>
+<li><p><span class="dfn">Default upper visible MIDI note</span>: this note will be the
+highest visible one on the timeline unless you tweak that by
+adjusting the vertical range. E.g. B4 is B on the fourth octave.</p></li>
+<li><p><span class="dfn">Maximum note height</span> sets the height of MIDI notes in
+pixels at maximum vertical zoom. Attempting to zoom in closer
+will result in scrolling the pianoroll up or down.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">MIDI Port Options</span></p>
+<ul>
+<li><p><span class="dfn">MIDI input follows MIDI track selection</span> allows Ardour to
+automatically connect the MIDI input to the selected track.
+Selecting a different MIDI track results in Ardour disconnecting
+the MIDI device from the former track and connecting it to the
+newly selected one, so that the MIDI device is always connected
+to the selected track. Which MIDI device will follow selection
+can be chosen below.</p></li>
+</ul>
+</li>
+</ul>
+<section id="midi-port-config">
+<h3>MIDI Port Config<a class="headerlink" href="#midi-port-config" title="Link to this heading">¶</a></h3>
+<p id="preferences-midi-port-config">This page allows to set options for input and output MIDI devices, such
+as:</p>
+<ul class="simple">
+<li><p><span class="kbd menu">Music Data</span>: whether Ardour should accept/send note
+events from/to selected MIDI device</p></li>
+<li><p><span class="kbd menu">Control Data</span>: whether Ardour should accept/send
+control events (Control Change, or CC) from/to selected MIDI device</p></li>
+<li><p><span class="kbd menu">Follow Selection</span>: whether Ardour should connect this
+device only to a selected track (only applicable to input devices)</p></li>
+</ul>
+<p>You can also give a more meaningful name to any input and output MIDI
+device here. Double-click the name of the device, enter a new name, then
+press <span class="kbd">Enter</span> to confirm.</p>
+</section>
+</section>
+<section id="transport">
+<h2>Transport<a class="headerlink" href="#transport" title="Link to this heading">¶</a></h2>
+<ul class="simple" id="preferences-transport">
+<li><p><span class="dfn">General</span></p>
+<ul>
+<li><p><span class="dfn">Prompt for new marker names</span> when enabled, popup a dialog
+when a new <a class="reference internal" href="#&#64;&#64;working-with-markers"><span class="xref myst">marker</span></a> is created. This
+allows markers to be named as they are created.</p></li>
+<li><p><span class="dfn">Stop at the end of the session</span> causes the transport to
+stop during playback when it reaches the end marker. Behavior
+during recording is not changed.</p></li>
+<li><p><span class="dfn">Keep record-enable engaged on stop</span> leaves the global
+record-enable engaged after transport is stopped. Does not
+affect track level record-enable which is never changed on stop.</p></li>
+<li><p><span class="dfn">Reset default speed on stop</span> when the <a class="reference internal" href="#&#64;&#64;transport-bar"><span class="xref myst">Shuttle speed
+control</span></a> is in <em>wheel</em> mode, i.e. the transport
+speed can be constantly changed, enabling this option makes
+these changes temporary, and the transport speed reset each time
+the transport is stopped.</p></li>
+<li><p><span class="dfn">Disable per-track record disarm while rolling</span>, when
+enabled, will not allow the any track’s record-enable to be
+disarmed during record, preventing accidentally stopping the
+recording of a take.</p></li>
+<li><p><span class="dfn">12dB gain reduction during fast-forward and fast-rewind</span>
+when enabled will reduce the unpleasant increase in perceived
+volume that occurs when fast-forwarding or rewinding through
+some kinds of audio.</p></li>
+<li><p><span class="dfn">Rewind/Fast-forward buttons change direction immediately</span>
+sets whether Rewind and Fast-forward transport operations
+(<span class="kbd menu">Transport &gt; Forward/Rewind</span>) changes the playback
+direction and speed abruptly, or gradually.</p></li>
+<li><p><span class="dfn">Allow auto-return after rewind/ffwd operations</span> if <a class="reference internal" href="#&#64;&#64;other-toolbar-items#playhead_options"><span class="xref myst">Auto
+return</span></a>is engaged, sets
+whether it applies to rewind and fast-forward operations.</p></li>
+<li><p><span class="dfn">Preroll:</span> sets the duration of the preroll for playing
+and recording when using a preroll. Can be a musical duration
+(in bars) or a duration in seconds.</p></li>
+<li><p><span class="dfn">Create a marker when a MIDI program change is received (and
+RECORDING)</span> allows capturing a MIDI program change when
+recording from an external MIDI device.</p></li>
+<li><p><span class="dfn">Locate to the next matching scene marker when a MIDI program
+change is received (and NOT recording)</span>: allows moving the
+playhead to a previously captured MIDI scene event when received
+a MIDI program change.</p></li>
+<li><p><span class="dfn">Stop transport using the current grid (if any)</span>: if
+enabled, stopping the transport (playback or recording) will
+happen at the next grid point instead of immediately.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Looping</span></p>
+<ul>
+<li><p><span class="dfn">Play loop is a transport mode</span> changes the behavior of
+the loop button, turning it into a toggle. When enabled, the
+loop button does not start playback but forces playback to
+always play the loop. Looping stays engaged when the transport
+is stopped. Playback continues where the transport stopped and
+continues to loop. When disabled, the loop button starts playing
+the loop but stop then cancels loop playback.</p></li>
+<li><p><span class="dfn">Loop Fades:</span> when the transport moves from the end of the
+loop range back to the beginning, clicks might be audible. This
+parameter allows for adding fades (in, out or cross-) to prevent
+those clicks.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Dropout (xrun) Handling</span></p>
+<ul>
+<li><p><span class="dfn">Stop recording when an xrun occurs</span> will stop the
+transport when an xrun occurs during recording, ensuring no
+audible glitches are recorded.</p></li>
+<li><p><span class="dfn">Create markers where xruns occur</span> will create a new
+<a class="reference internal" href="#&#64;&#64;working-with-markers"><span class="xref myst">marker</span></a> when an xrun occurs during
+recording at the location of the xrun. This marks where possible
+xruns might produce audible glitches.</p></li>
+<li><p><span class="dfn">Reset x-runs counter when starting to record</span>, when
+enabled, sets the x-run counter in the <a class="reference internal" href="#&#64;&#64;status-bar"><span class="xref myst">Status
+bar</span></a> to 0 each time a recording is started, hence
+showing only the relevant number of x-run while recording.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Plugins</span></p>
+<ul>
+<li><p><span class="dfn">Silence plugins when the transport is stopped</span> when
+stopping playback or recording, if this option is checked, the
+plugins that still emit sound (reverbs, etc…) will be stopped.
+If unchecked, the plugins will continue playing after the
+transport stop.</p></li>
+</ul>
+</li>
+</ul>
+<section id="chase">
+<h3>Chase<a class="headerlink" href="#chase" title="Link to this heading">¶</a></h3>
+<ul class="simple" id="preferences-transport-chase">
+<li><p><span class="dfn">MIDI Machine Control (MMC)</span></p>
+<ul>
+<li><p><span class="dfn">Respond to MMC commands</span> when enabled Ardour will respond
+to MIDI Machine Control commands received on the <code class="docutils literal notranslate"><span class="pre">ardour:MMC</span> <span class="pre">in</span></code>
+MIDI port.</p></li>
+<li><p><span class="dfn">Inbound MMC device ID:</span> is the only device ID Ardour will
+respond to when an MMC command is received on the
+<code class="docutils literal notranslate"><span class="pre">ardour:MMC</span> <span class="pre">in</span></code> MIDI port.</p></li>
+<li><p><span class="dfn">MMC Fast-wind behavior:</span> how to respond to the
+“fast-wind” command that allows quickly navigating through the
+timeline.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Transport Masters</span></p>
+<ul>
+<li><p><span class="dfn">Show Transport Master Window</span> Opens the Transport masters
+window, where all the timecode sources are shown to be selected
+and/or synchronized; same as clicking <span class="kbd menu">Window &gt; Transport
+Masters</span></p></li>
+<li><p><span class="dfn">Match session video frame rate to external timecode</span>
+controls the value of the video frame rate <em>while chasing</em> an
+external timecode source. When enabled, the session video frame
+rate will be changed to match that of the selected external
+timecode source. When disabled, the session video frame rate
+will not be changed to match that of the selected external
+timecode source. Instead, the frame rate indication in the main
+clock will flash red and Ardour will convert between the
+external timecode standard and the session standard.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="generate">
+<h3>Generate<a class="headerlink" href="#generate" title="Link to this heading">¶</a></h3>
+<ul class="simple" id="preferences-transport-generate">
+<li><p><span class="dfn">Linear Timecode (LTC) Generator</span></p>
+<ul>
+<li><p><span class="dfn">Enable LTC generator</span> when enabled Ardour will output an
+LTC timecode signal on its <em>LTC-out</em> port. If this option is
+checked, the two options below are active:</p></li>
+<li><p><span class="dfn">Send LTC while stopped</span>, (only available when the
+previous <em>Enable LTC generator</em> is on) when enabled Ardour will
+continue to send LTC information even while the transport
+(playhead) is not moving.</p></li>
+<li><p><span class="dfn">LTC generator level [dBFS]:</span> specifies the peak volume
+of the generated LTC signal in dbFS. A good value is
+0dBu=−18dbFS in an EBU calibrated system.</p></li>
+<li><p><span class="dfn">LTC Output Port:</span> selects to which port (if any) the LTC
+generator will be connected by default.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">MIDI Time Code (MTC) Generator</span></p>
+<ul>
+<li><p><span class="dfn">Enable MTC Generator</span> when enabled Ardour will generate
+MIDI time code on the <code class="docutils literal notranslate"><span class="pre">ardour:MTC</span> <span class="pre">out</span></code> MIDI port.</p></li>
+<li><p><span class="dfn">Max MTC varispeed (%):</span> MIDI time code generation will be
+disabled when the transport speed is greater than normal speed
+plus this percentage or less than normal minus this percentage.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">MIDI Machine Control (MMC)</span></p>
+<ul>
+<li><p><span class="dfn">Send MMC commands</span> when enabled Ardour will send MIDI
+Machine Control commands on the <code class="docutils literal notranslate"><span class="pre">ardour:MMC</span> <span class="pre">out</span></code> MIDI port.</p></li>
+<li><p><span class="dfn">Outbound MMC device ID:</span> is the MIDI device ID Ardour
+will use when it sends MMC commands.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">MIDI Beat Clock (Mclk) Generator</span></p>
+<ul>
+<li><p><span class="dfn">Enable Mclk generator</span> when enabled Ardour will generate
+a (tempo dependent) beat clock at a rate of 24 pulses per
+quarter note on the <code class="docutils literal notranslate"><span class="pre">ardour:MIDI</span> <span class="pre">clock</span> <span class="pre">out</span></code> port.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="plugins">
+<h2>Plugins<a class="headerlink" href="#plugins" title="Link to this heading">¶</a></h2>
+<p id="preferences-plugins">The content of this preference page varies heavily between versions or
+Ardour: both the platform and the build-time options can make Ardour
+support some types of plugins and not others. While this documentation
+tries to show all possible options, most systems will only show a subset
+of the options hereunder, e.g. AudioUnits are macOS only…</p>
+<ul class="simple">
+<li><p><span class="dfn">Scan/Discover</span></p>
+<ul>
+<li><p><span class="dfn">Scan for Plugins</span> will initiate an immediate scan of the
+system for available plugins. Useful to get a newly installed
+plugin recognised by Ardour.</p></li>
+<li><p><span class="dfn">Scan Time Out</span> sets the time that Ardour will try to find
+any plugins in known paths until it gives up.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">General</span></p>
+<ul>
+<li><p><span class="dfn">Scan for [new] Plugins on Application Start</span> When
+enabled new plugins are searched, tested and added to the cache
+index on application start. When disabled new plugins will only
+be available after triggering a ‘Scan’ manually.</p></li>
+<li><p><span class="dfn">Always Display Plugin Scan Progress</span> When enabled a popup
+window showing plugin scan progress is displayed for indexing
+(cache load) and discovery (detect new plugins).</p></li>
+<li><p><span class="dfn">Verbose Plugin Scan</span>: adds information about the plugin
+in the <a class="reference internal" href="#&#64;&#64;status-bar"><span class="xref myst">Log window</span></a>.</p></li>
+<li><p><span class="dfn">Open Plugin manager window when missing plugins are
+found</span>: when enabled, the Plugin Manager is displayed at
+session load if the session contains any plugins that are
+missing, or plugins have been updated and require a rescan.</p></li>
+<li><p><span class="dfn">Make new plugins active</span>: when enabled, any plugin added
+to a track will be in active mode. If unchecked, the plugins
+will be added in inactive mode by default, hence have no
+processing effect on the track/bus.</p></li>
+<li><p><span class="dfn">Setup Sidechain ports when loading plugin with aux
+inputs</span>: when enabled, Ardour will automatically create
+sidechain ports for plugins that have sidechain inputs and leave
+them for the user to connect in the Pin Configuration dialog
+(see the <a class="reference internal" href="../signal-routing/sidechaining.html"><span class="doc std std-doc">Sidechaining</span></a> chapter).</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">LV1/LV2</span></p>
+<ul>
+<li><p><span class="dfn">Conceal LADSPA (LV1) Plugins if matching LV2 exists</span> When
+enabled, gives precedence to the LV2 (more up-to-date) version
+of a plugin over its LV1 version, if both exists.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Instrument</span></p>
+<ul>
+<li><p><span class="dfn">Ask to replace existing instrument plugin</span>: if a MIDI
+track already has an instrument (i.e. MIDI to audio converter of
+some sort) and this option is checked, Ardour will detect it and
+offer to replace the existing instrument with the newly added
+one, avoiding a possible conflict.</p></li>
+<li><p><span class="dfn">Interactively configure instrument plugins on insert</span>:
+when inserting a multichannel instrument plugin, if this option
+is checked, prompts the user for the channel configuration for
+this plugin.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Statistics</span></p>
+<ul>
+<li><p><span class="dfn">Reset Statistics</span>: clears the statistics used to
+determine the most used and most recently used plugins.</p></li>
+<li><p><span class="dfn">Plugin chart (use-count) length:</span> In the Mixer view’s
+<a class="reference internal" href="#&#64;&#64;favorite-plugins-window"><span class="xref myst">favorite plugins</span></a> section,
+determines how many plugins are displayed when in <em>Top-10
+Plugins</em> mode.</p></li>
+<li><p><span class="dfn">Plugin recent list length:</span> Same as above, when in
+<em>Recent Plugins</em> mode.</p></li>
+</ul>
+</li>
+</ul>
+<section id="gui">
+<h3>GUI<a class="headerlink" href="#gui" title="Link to this heading">¶</a></h3>
+<ul class="simple" id="preferences-plugins-gui">
+<li><p><span class="dfn">Plugin GUI</span></p>
+<ul>
+<li><p><span class="dfn">Automatically open the plugin GUI when adding a new
+plugin</span> shows the plugins GUI as soon as it is added to
+the processing box. If unchecked, the plugin will be added in
+the processor box but the GUI will only be shown when <span class="kbd mouse">double
+clicking</span> it.</p></li>
+<li><p><span class="dfn">Automatically open instrument plugin GUI when adding a new MIDI
+Track/Bus</span>: Ardour defaults to automatically showing
+instrument plugin GUIs when new tracks/busses with instruments
+are added. If multiple tracks are added, Ardour will only show
+the GUI for the first one. This setting allows you to opt out of
+that behavior.</p></li>
+<li><p><span class="dfn">Show only one plugin window at a time</span>: when enabled,
+only one plugin window will be displayed on the screen; when
+disabled, you can open as many plugin windows as you like.</p></li>
+<li><p><span class="dfn">Closing a Plugin GUI Window</span>: this allows users deciding
+how Ardour should treat plugin windows aftre closing them.
+Hiding means a complex plugin window can be re-opened fast
+because it’s saved in memory, but it uses system resources.
+Destroying means the window isn’t saved, which frees up system
+resources, however some plugins will take longer to showup on
+the screen.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Mixer Strip Inline Display</span></p>
+<ul>
+<li><p><span class="dfn">Show Plugin Inline Display on Mixer strip by default</span>
+allows Ardour to show, in the <a class="reference internal" href="#&#64;&#64;audiomidi-mixer-strips"><span class="xref myst">mixer
+strips</span></a>, a visual rendering of the
+effect. These Inline Display are a special feature of Ardour, so
+not all plugins are able to show this display. Most of Ardour’s
+<a class="reference internal" href="#&#64;&#64;bundled-plugins"><span class="xref myst">own plugins</span></a> have an Inline Display. At any
+time, the plugin’s inline display can be toggled on or off by
+<span class="kbd mod3n"></span>double-clicking it.</p></li>
+<li><p><span class="dfn">Don’t automatically open the plugin GUI when the plugin has an
+inline display mode</span>: this option, available only if
+<span class="kbd option">Automatically open the plugin GUI when adding a new
+plugin</span> is checked, supercedes it and hides the
+plugin GUI at creation if it has an Inline Display, like
+Ardour’s own <code class="docutils literal notranslate"><span class="pre">ACE</span> <span class="pre">*</span></code> plugins.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">VST3 UI</span>:</p>
+<ul>
+<li><p><span class="dfn">Automatically show ‘Micro Edit’ tagged controls on the
+mixer-strip:</span> displays the plugin’s UI directly inside
+each mixer strip (inline), if the plugin has a ‘Micro Edit’
+<span>tag</span>.</p></li>
+<li><p><span class="dfn">VST3 Knob Mode:</span> Enforce a knob mode for VST3 plugins:
+use plugin default or switch between linear (depends on vertical
+movement) and two variation of circular, with and without a jump
+to a clicked position.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="vst">
+<h3>VST<a class="headerlink" href="#vst" title="Link to this heading">¶</a></h3>
+<ul class="simple" id="preferences-plugins-vst">
+<li><p><span class="dfn">VST</span></p>
+<ul>
+<li><p><span class="dfn">Enable Mac VST2 support (requires restart or re-scan)</span>
+makes a MacOs system able to run VST-Mac plugins. As stated, a
+new scan for plugins is required, be it manually or by
+restarting Ardour.</p></li>
+<li><p><span class="dfn">Enable Linux VST2 support (requires restart or re-scan)</span>
+makes a Linux system able to run VST2 plugins.</p></li>
+<li><p><span class="dfn">Enable VST3 support (requires restart or re-scan)</span> makes
+any system able to run VST3 plugins.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">VST 2.x</span></p>
+<ul>
+<li><p><span class="dfn">VST 2 Cache:</span> Clicking the <span class="kbd menu">Clear</span> button
+removes all VST plugins from the list of plugins available to be
+inserted into the processor box. A new VST plugin scan is then
+required.</p></li>
+<li><p><span class="dfn">VST 2 Ignorelist:</span> Clicking the <span class="kbd menu">Clear</span>
+button makes ignored VST plugins available to be added to the
+processor box.</p></li>
+<li><p><span class="dfn">Linux VST2 Path:</span> Clicking the <span class="kbd menu">Edit</span> button
+pops up a dialog to manage the directories that will be searched
+for Linux VST plugins. When modified, Ardour will offer to scan
+those paths for plugins.</p></li>
+<li><p><span class="dfn">Path:</span> are the paths chosen above.</p></li>
+<li><p><span class="dfn">Windows VST Path:</span> Clicking the <span class="kbd menu">Edit</span> button
+pops up a dialog to manage the directories that will be searched
+for Windows VST plugins. When modified, Ardour will offer to
+scan those paths for plugins.</p></li>
+<li><p><span class="dfn">Path:</span> are the paths chosen above.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">VST 3</span></p>
+<ul>
+<li><p><span class="dfn">VST 3 Cache:</span> Same as above, for VST 3</p></li>
+<li><p><span class="dfn">VST 3 Ignorelist:</span> Same as above, for VST 3</p></li>
+<li><p><span class="dfn">Additional VST3 Path:</span> The VST 3 specs clearly define
+where the host application should look for plugins. Although
+Ardour provides a way to search other directories for plugin, it
+is out of spec and not recommended.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">VST2/VST3</span></p>
+<ul>
+<li><p><span class="dfn">Conceal VST2 Plugin if matching LV3 exists:</span> When
+enabled, gives precedence to the VST3 (more up-to-date) version
+of a plugin over its VST2 version, if both exists.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="audio-unit">
+<h3>Audio Unit<a class="headerlink" href="#audio-unit" title="Link to this heading">¶</a></h3>
+<ul class="simple" id="preferences-plugins-audio-unit">
+<li><p><span class="dfn">Audio Unit</span></p>
+<ul>
+<li><p><span class="dfn">Enable Audio Unit support (requires restart or re-scan)</span>
+When enabled, new AU plugins are searched, tested and added to
+the cache index on application start. When disabled, new plugins
+will only be available after triggering a ‘Scan’ manually.</p></li>
+<li><p><span class="dfn">AU Cache:</span> Clicking the <span class="kbd menu">Clear</span> button
+removes all AU plugins from the list of plugins available to be
+inserted into the processor box. A new AU plugins scan is then
+required.</p></li>
+<li><p><span class="dfn">AU Ignorelist:</span> Clicking the <span class="kbd menu">Clear</span> button
+makes ignored AU plugins available to be added to the processor
+box.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="monitoring">
+<h2>Monitoring<a class="headerlink" href="#monitoring" title="Link to this heading">¶</a></h2>
+<ul class="simple" id="preferences-monitoring">
+<li><p><span class="dfn">Monitoring</span></p>
+<ul>
+<li><p><span class="dfn">Record monitoring handled by:</span> determines whether Ardour
+provides monitoring of incoming audio or whether monitoring is
+provided by hardware. See <a class="reference internal" href="#&#64;&#64;monitoring"><span class="xref myst">Monitoring</span></a> for more
+information.</p></li>
+<li><p><span class="dfn">Auto Input does ‘talkback’</span> when enabled, the
+<span class="kbd option">Transport &gt; Auto Input</span> option also sets the
+tracks to monitor its audio input when transport is not rolling.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Solo</span> contains settings that affect the use of <a class="reference internal" href="#&#64;&#64;muting-and-soloing"><span class="xref myst">solo,
+muting</span></a>, and <a class="reference internal" href="#&#64;&#64;panning"><span class="xref myst">panning</span></a>.</p>
+<ul>
+<li><p><span class="dfn">Solo controls are Listen controls</span>: when enabled, the
+soloed track is soloed only on the monitor bus, the master fader
+mix is not affected by the solo. This option can also be set by
+enabling pre-fader listen or after-fader listen in the <strong>Mixer</strong>
+monitor section.</p></li>
+<li><p><span class="dfn">Exclusive solo</span> when enabled will only solo the last
+track selected for solo. Previously soloed tracks will be
+un-soloed. This setting is also available from the <strong>Mixer</strong>
+monitor section.</p></li>
+<li><p><span class="dfn">Show solo muting</span> when enabled outlines the mute button
+on tracks and busses when another track is soloed.</p></li>
+<li><p><span class="dfn">Soloing overrides muting</span> when enabled allows a track to
+be heard when it is soloed while muted. This setting is also
+available from the <strong>Mixer</strong> monitor section.</p></li>
+<li><p><span class="dfn">Solo-in-place mute cut (dB):</span> sets the attenuation of the
+other tracks when another track is soloed in place. This setting
+is also available from the <strong>Mixer</strong> monitor section. The
+default is “−inf” for −∞, meaning the other tracks are totally
+muted.</p></li>
+<li><p><span class="dfn">Listen Position:</span> determines what is listened to when the
+solo controls are used as listen controls. The options are
+after-fader or pre-fader.</p></li>
+<li><p><span class="dfn">PFL signals come from:</span> determines whether the pre-fader
+listen position is before or after the pre-fader processors.</p></li>
+<li><p><span class="dfn">AFL signals come from:</span> determines whether the
+after-fader listen position is before or after the after-fader
+processors.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="signal-flow">
+<h2>Signal Flow<a class="headerlink" href="#signal-flow" title="Link to this heading">¶</a></h2>
+<ul class="simple" id="preferences-signal-flow">
+<li><p><span class="dfn">Master</span></p>
+<ul>
+<li><p><span class="dfn">Enable master-bus output gain control</span> adds a gain-stage
+to the master-bus and a Loudness Analyzer &amp; Normalizer button
+that calculates the Loudness (LUFS) of the session (or a range
+selection), and normalizes the loudness according to various
+standards.</p></li>
+<li><p><span class="dfn">I/O Resampler (vari-speed) quality</span>: resampling on the
+fly during playback or recording takes time and thus introduces
+latency. This setting accommodates for that and introduces
+latency predictably and consistently. Each preset matches a
+particular level of resampling quality. Restarting audio engine
+is required after changing this setting.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Default Track / Bus Muting Options</span> sets the muting options
+for a newly created tracks or bus. The mute options for an existing
+track or bus are changed by the right-click context menu on a mute
+button.</p>
+<ul>
+<li><p><span class="dfn">Mute affects pre-fader sends</span> when enabled pre-fader
+sends will be muted by default.</p></li>
+<li><p><span class="dfn">Mute affects post-fader sends</span> when enabled post-fader
+sends will be muted by default.</p></li>
+<li><p><span class="dfn">Mute affects control outputs</span> when enabled control
+outputs are muted by default.</p></li>
+<li><p><span class="dfn">Mute affects main outputs</span> when enabled main outputs are
+muted by default.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Send Routing</span> affects <a class="reference internal" href="#&#64;&#64;aux-sends"><span class="xref myst">aux and external sends</span></a>.</p>
+<ul>
+<li><p><span class="dfn">Link panners of Aux and External Sends with main panner by
+default</span> when enabled, sends follow the channel panner.
+When disabled, sends can panned independently of the channel
+panner and fader. Double clicking the send in the processor box
+toggles the main panner and fader between the aux send and the
+channel.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Audio Regions</span></p>
+<ul>
+<li><p><span class="dfn">Replicate missing region channels</span>: if a track is
+N-channel, and the region has fewer channels, this option copies
+the existing channel’s data for this non-existent one. If left
+unchecked, the missing channels will stay silent.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Track and Bus Connections</span></p>
+<ul>
+<li><p><span class="dfn">Auto-connect main output (master or monitor) bus to physical
+ports</span> auto-connects the outputs to the first N physical
+ports. In a session without a <a class="reference internal" href="#&#64;&#64;monitor-section"><span class="xref myst">monitor
+section</span></a>, the master-bus is connected to the
+system’s playback ports, and if a monitor section exists, the
+monitor-bus’ output are connected.</p></li>
+<li><p><span class="dfn">Connect track inputs:</span> allows to choose when a new track
+is created whether its inputs will be automatically connected to
+the physical inputs of the system or not (hence the user has to
+manually connect it).</p></li>
+<li><p><span class="dfn">Connect track and bus outputs:</span> allows to choose, for any
+new track or bus created, whether its output will automatically
+be connected to the master bus, directly to the physical outputs
+or to nothing (the user has to manually connect it).</p></li>
+<li><p><span class="dfn">Use ‘Strict-I/O’ for new tracks or busses</span> determines
+the default choice for the <a class="reference internal" href="#&#64;&#64;trackbus-signal-flow"><span class="xref myst">signal flow</span></a>
+of a newly created track or bus. This can be overridden in the
+<a class="reference internal" href="#&#64;&#64;adding-tracks-busses-and-vcas"><span class="xref myst">Add Track/Bus/VCA</span></a> dialog</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="metronome">
+<h2>Metronome<a class="headerlink" href="#metronome" title="Link to this heading">¶</a></h2>
+<ul class="simple" id="preferences-metronome">
+<li><p><span class="dfn">Metronome</span> handles the way Ardour’s metronome is played when
+enabled in the <a class="reference internal" href="#&#64;&#64;transport-bar"><span class="xref myst">Transport Bar</span></a>.</p>
+<ul>
+<li><p><span class="dfn">Emphasis on first beat</span> plays a different sound when the
+first beat is played (e.g. 1/4 in 4/4, 1/3 in 3/4,…). When
+unchecked, all the beats are indistinguishable.</p></li>
+<li><p><span class="dfn">Use built-in default sounds</span> when checked, uses Ardour’s
+own sounds for the metronome click. Unchecking this allows to
+set some custom sounds below.</p></li>
+<li><p><span class="dfn">Audio file:</span> selects an audio file for the beats, in any
+<a class="reference internal" href="#&#64;&#64;supported-file-formats"><span class="xref myst">format</span></a> Ardour supports.</p></li>
+<li><p><span class="dfn">Emphasis audio file:</span> in conjunction with <span class="kbd option">Emphasis on
+first beat</span>, selects an audio file for the first
+beats of each bar.</p></li>
+<li><p><span class="dfn">Gain level:</span> allows the metronome’s click sounds to be
+boosted or attenuated.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Options</span></p>
+<ul>
+<li><p><span class="dfn">Enable Metronome only while recording</span>: when enabled, the
+metronome will remain silent unless Ardour is recording.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="control-surfaces">
+<h2>Control Surfaces<a class="headerlink" href="#control-surfaces" title="Link to this heading">¶</a></h2>
+<p id="preferences-control-surfaces">This tab contains settings for <a class="reference internal" href="#&#64;&#64;control-surfaces"><span class="xref myst">control surfaces</span></a>.</p>
+<p>It lists all the Control Surface protocols Ardour knows. To enable a
+<span class="dfn">Control Surface Protocol</span>, the <span class="kbd option">Enable</span> checkbox
+next to its name should be ticked. Editing the settings related to this
+protocol can be done by double-clicking its name or clicking the <span class="kbd menu">Show
+protocol settings</span> (only for Generic MIDI and Open Sound
+Control).</p>
+</section>
+<section id="metering">
+<h2>Metering<a class="headerlink" href="#metering" title="Link to this heading">¶</a></h2>
+<ul class="simple" id="preferences-metering">
+<li><p><span class="dfn">Metering</span></p>
+<ul>
+<li><p><span class="dfn">Peak hold time:</span> allows the meter to keep displaying the
+highest signal level for a period of time before reverting to
+showing the actual instantaneous value (unless an even higher
+peak occurs). The longer this time is, the easier it is to spot
+peaks, at the expense of instantaneous accuracy.</p></li>
+<li><p><span class="dfn">DPM fall-off:</span> describes how fast the Digital Peak Meters
+can go from a high value to a lower one. Faster values are more
+accurate but less readable.</p></li>
+<li><p><span class="dfn">Meter line-up level; 0 dBu:</span> chooses a standard for the
+conversion between dBFS (Full Scale) which represent the numeric
+signal level, and dBu which represents the analog signal level.
+This value is used to configure meter-marks and color
+knee-points, or set the reference levels for various
+meter-types.</p></li>
+<li><p><span class="dfn">IEC1/DIN Meter line-up level; 0 dBu:</span> sets the reference
+level for the IEC1/DIN Meter</p></li>
+<li><p><span class="dfn">VU Meter standard:</span> selects which standard to use for the
+zero value of the vu-meters, i.e. the analog dBu value that will
+show as 0 on the VU-meter.</p></li>
+<li><p><span class="dfn">Peak indicator threshold [dBFS]:</span> at that value and
+over, the signal will make the peak meter to turn red,
+indicating a level too high.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Default Meter Types</span> sets the default meters when creating a
+session or track. These meters can be changed afterwards by
+<span class="kbd mouse">right</span>-clicking a meter.</p>
+<ul>
+<li><p><span class="dfn">Default Meter Type for Master Bus:</span> defines which kind of
+<a class="reference internal" href="#&#64;&#64;metering-in-ardour"><span class="xref myst">meter</span></a> will be used when creating a new
+session (does not apply to the current session).</p></li>
+<li><p><span class="dfn">Default Meter Type for busses:</span> defines which kind of
+meter will be used when creating a new bus (applies to the bus
+created after changing the value).</p></li>
+<li><p><span class="dfn">Default Meter Type for tracks:</span> same as above, for
+tracks.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Region Analysis</span></p>
+<ul>
+<li><p><span class="dfn">Enable automatic analysis of audio</span> generates the
+transient values (used in e.g. the <a class="reference internal" href="#&#64;&#64;rhythm-ferret"><span class="xref myst">Rhythm
+Ferret</span></a>) automatically. When unchecked, the
+transient values will be generated on demand.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="performance">
+<h2>Performance<a class="headerlink" href="#performance" title="Link to this heading">¶</a></h2>
+<ul class="simple" id="preferences-performance">
+<li><p><span class="dfn">DSP CPU Utilization</span></p>
+<ul>
+<li><p><span class="dfn">Signal processing uses:</span> sets an upper limit on how many
+CPU cores or processors can be used to signal processing. By
+default Ardour uses all but one (leaving one core for the GUI,
+and other tasks).</p></li>
+<li><p><span class="dfn">Power Management, CPU DMA latency: </span> modern processors
+try to aggressively transition to power saving when idle, even
+for a few microseconds, hurting realtime performance by needing
+to wake to a more active state. This setting counters this
+behaviour by setting a maximum response time while low latency
+operation is desired. <span class="kbd menu">0</span> is the fastest response
+time.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">CPU/FPU Denormals</span> are a specific type of very small numbers
+that can cause issues with CPU consumption when using some plugins
+in some circumstances. Ardour provides two methods of handling the
+issue. Trying different combinations of these settings may minimize
+CPU consumption.</p>
+<ul>
+<li><p><span class="dfn">Use DC bias to protect against denormals</span> adds a small
+constant value to numbers to move the numbers away from zero.</p></li>
+<li><p><span class="dfn">Processor handling:</span>, if the computer’s hardware
+supports it, offers two methods that can be used individually or
+combined. Flush to zero and denormals are zero.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Disk I/O Buffering</span> settings determine how many seconds of
+audio off of disk will be buffered in memory. Longer settings reduce
+the risk of buffer under-runs but consume more memory.</p>
+<ul>
+<li><p><span class="dfn">Preset:</span> will automatically choose the values for the
+playback and recording buffer based on the chosen size of the
+session. The <strong>Custom</strong> option allows to manually select the
+buffers with the two sliders below.</p></li>
+<li><p><span class="dfn">Playback (seconds of buffering):</span> sets how many seconds
+of audio Ardour will buffer during playback.</p></li>
+<li><p><span class="dfn">Recording (seconds of buffering):</span> sets how many seconds
+of audio Ardour will buffer during recording.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Memory Usage</span></p>
+<ul>
+<li><p><span class="dfn">Waveform image cache (megabytes):</span> sets the maximum
+amount of ram that can be used to store the images representing
+the waveforms in the editor. Past this amount, the images will
+be regenerated when needed, which can significantly decrease the
+system’s performance.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Automation</span></p>
+<ul>
+<li><p><strong>Thinning factor</strong> ranges from 0 to 1000 with larger values
+sending fewer automation changes. Thinning is like lossy audio
+compression, removing data that is less likely to be noticed,
+although the more is removed, the more likely the loss will be
+noticed. The advantage to thinning is reduced CPU usage.</p></li>
+<li><p><strong>Automation sampling interval</strong> ranges from 1 to 1000 ms.
+Determines how frequently the automation input is sampled. The
+shorter the interval the higher the accuracy but also the higher
+the CPU requirements.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Automatables</span></p>
+<ul>
+<li><p><span class="dfn">Limit automatable parameters per plugin</span>: as some plugins
+(synthesizers, …) have a lot of parameters, and those
+parameters can be automated by Ardour, checking this will limit
+the number of parameters that are listed as automatable, hence
+making the lists shorter and the GUI more responsive.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="video">
+<h2>Video<a class="headerlink" href="#video" title="Link to this heading">¶</a></h2>
+<ul class="simple" id="preferences-video">
+<li><p><span class="dfn">Video Server</span></p>
+<ul>
+<li><p><span class="dfn">Show Video Server Startup Dialog</span>: when using video
+inside Ardour, this video is accessed via Xjadeo from a source
+file through a Video Server. This options shows the server’s
+startup dialog (useful for debugging a malfunctioning video).</p></li>
+<li><p><span class="dfn">Advanced Setup (remote video server)</span> can be used when
+the setup is more complex than opening a local file with Ardour.
+The tools used behind the scene by Ardour allow a lot of
+flexibility, so for a competent user, the options below are
+provided to access a distant file (i.e. on another machine). The
+default options for the two following fields
+(”<a class="reference external" href="http://localhost:1554">http://localhost:1554</a>” and “/”) are suitable for local
+files.</p></li>
+<li><p><span class="dfn">Video Server URL:</span> Base URL of the video server
+delivering the video through the network
+(<code class="docutils literal notranslate"><span class="pre">http://IP-or-address:port</span></code>).</p></li>
+<li><p><span class="dfn">Video folder</span> is the server’s local path to the
+document-root, i.e. the files that can be delivered by the
+server.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Video Monitor</span></p>
+<ul>
+<li><p><span class="dfn">Custom Path to Video Monitor (xjadeo) - leave empty for
+default:</span> Ardour bundles offer xjadeo bundled, so it
+should run flawlessly. Though, for custom builds or if a newer
+version of xjadeo is available, one can specify a path to the
+wanted version of xjadeo.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="triggering">
+<h2>Triggering<a class="headerlink" href="#triggering" title="Link to this heading">¶</a></h2>
+<ul class="simple" id="preferences-triggering">
+<li><p><span class="dfn">Triggering</span></p>
+<ul>
+<li><p><span class="dfn">Default trigger input</span>: this is where you choose a MIDI
+device that will send notes to trigger boxes in the Cue window.
+This is typically a grid controller like monome, Novation
+Launchpad, Ableton Push etc.</p></li>
+</ul>
+</li>
+<li><p><span class="dfn">Clip Library</span></p>
+<ul>
+<li><p><span class="dfn">User writable Clip Library</span>: this is a folder where your
+custom reusable clips will be saved to.</p></li>
+<li><p><span class="dfn">Reset Clip Library Dir</span>: this will reset the location of
+your custom reusable clips to a default location.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="session-properties-dialog.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Session Properties</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../synchronization/transport-masters.html.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Transport Masters</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2026, ardour.org
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            <div class="last-updated">
+              Last updated on Sep 13, 2026</div>
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Preferences</a><ul>
+<li><a class="reference internal" href="#general">General</a></li>
+<li><a class="reference internal" href="#appearance">Appearance</a><ul>
+<li><a class="reference internal" href="#recorder">Recorder</a></li>
+<li><a class="reference internal" href="#editor">Editor</a></li>
+<li><a class="reference internal" href="#waveform">Waveform</a></li>
+<li><a class="reference internal" href="#mixer">Mixer</a></li>
+<li><a class="reference internal" href="#application-bar">Application Bar</a></li>
+<li><a class="reference internal" href="#size-and-scale">Size and Scale</a></li>
+<li><a class="reference internal" href="#colors">Colors</a></li>
+<li><a class="reference internal" href="#quirks">Quirks</a></li>
+<li><a class="reference internal" href="#translation">Translation</a></li>
+<li><a class="reference internal" href="#regions">Regions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id1">Editor</a><ul>
+<li><a class="reference internal" href="#snap">Snap</a></li>
+<li><a class="reference internal" href="#modifiers">Modifiers</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#midi">MIDI</a><ul>
+<li><a class="reference internal" href="#midi-port-config">MIDI Port Config</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#transport">Transport</a><ul>
+<li><a class="reference internal" href="#chase">Chase</a></li>
+<li><a class="reference internal" href="#generate">Generate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#plugins">Plugins</a><ul>
+<li><a class="reference internal" href="#gui">GUI</a></li>
+<li><a class="reference internal" href="#vst">VST</a></li>
+<li><a class="reference internal" href="#audio-unit">Audio Unit</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#monitoring">Monitoring</a></li>
+<li><a class="reference internal" href="#signal-flow">Signal Flow</a></li>
+<li><a class="reference internal" href="#metronome">Metronome</a></li>
+<li><a class="reference internal" href="#control-surfaces">Control Surfaces</a></li>
+<li><a class="reference internal" href="#metering">Metering</a></li>
+<li><a class="reference internal" href="#performance">Performance</a></li>
+<li><a class="reference internal" href="#video">Video</a></li>
+<li><a class="reference internal" href="#triggering">Triggering</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=918a87af"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
+    <script src="../_static/tabs.js?v=3ee01567"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    </body>
+</html>
