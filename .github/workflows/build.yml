@@ -34,13 +34,13 @@ jobs:
       - name: Replace docs/source with converted manual
         run: |
           cp docs/source/conf.py /tmp/ardour-manual-sphinx-conf.py
-          rsync -a --delete --exclude='.git' --exclude='_static/css/' tmp/ardour-manual-conventer/ docs/source/
+          rsync -a --delete --exclude='.git' --exclude='_static/*.css' --exclude='_static/*.ttf' tmp/ardour-manual-conventer/ docs/source/
           cp /tmp/ardour-manual-sphinx-conf.py docs/source/conf.py
 
       - name: Add preview static assets
         run: |
           mkdir -p docs/source/_static
-          rsync -a --exclude='css/' tmp/ardour-manual-sphinx-preview/docs/source/_static/ docs/source/_static/
+          rsync -a --exclude='*.css' --exclude='*.ttf' tmp/ardour-manual-sphinx-preview/docs/source/_static/ docs/source/_static/
 
       - name: Set up Python
         uses: actions/setup-python@v5.4.0
